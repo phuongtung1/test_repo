@@ -14,7 +14,7 @@
         "nodes": [
             {
                 "name": "Start",
-                "id": "node_anry8w4z0ml",
+                "id": "node_ut9xccytu6",
                 "position": {
                     "x": 5340,
                     "y": 5000
@@ -196,7 +196,7 @@
                                 },
                                 "parentNode": {
                                     "name": "Node",
-                                    "id": "node_8xxqee3jk4l",
+                                    "id": "node_egxki8hhk79",
                                     "position": {
                                         "x": 5340,
                                         "y": 5200
@@ -1070,7 +1070,7 @@
                                         },
                                         {
                                             "type": 8,
-                                            "ID": "prod-o80lkci9xa",
+                                            "ID": "prod-vld38fu922a",
                                             "enabled": true,
                                             "print": false,
                                             "meta": {
@@ -1089,27 +1089,26 @@
                                                 },
                                                 {
                                                     "name": "entities",
-                                                    "value": "pg",
-                                                    "jsValue": "pg_",
-                                                    "usedVars": [
-                                                        "pg"
-                                                    ],
+                                                    "value": "#pg ?@type==\"window\"",
+                                                    "jsValue": "__modules__.query.Filter(__params__.model,  __modules__.query.Get(__params__.model, 'pg', null), 'type', null, '==', \"window\")",
+                                                    "usedVars": [],
                                                     "invalidVar": false,
                                                     "linked": false
                                                 },
                                                 {
                                                     "name": "vectors",
-                                                    "value": "[0, 0, -frame_thk / 2]",
+                                                    "value": "[0, 0, frame_thk / 2]",
                                                     "linked": false,
                                                     "invalidVar": false,
-                                                    "jsValue": "[0, 0, -frame_thk_ / 2]",
+                                                    "jsValue": "[0, 0, frame_thk_ / 2]",
                                                     "usedVars": [
                                                         "frame_thk"
                                                     ]
                                                 }
                                             ],
                                             "selected": false,
-                                            "hasError": false
+                                            "hasError": false,
+                                            "selectGeom": false
                                         },
                                         {
                                             "type": 8,
@@ -1197,7 +1196,7 @@
                                                     },
                                                     "parentNode": {
                                                         "name": "End",
-                                                        "id": "node_yin43ti2okj",
+                                                        "id": "node_q98fa4b1uke",
                                                         "position": {
                                                             "x": 5340,
                                                             "y": 5400
@@ -1298,7 +1297,7 @@
         ],
         "functions": [],
         "ordered": true,
-        "last_updated": "2019-09-06T07:08:37.387Z"
+        "last_updated": "2019-09-06T07:25:20.503Z"
     },
     "version": 1,
     "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500},\"positions\":{\"show\":true,\"size\":0.5},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":false},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-80,\"y\":-80,\"z\":80},\"pos_x\":-80,\"pos_y\":-80,\"pos_z\":80,\"target\":{\"x\":0,\"y\":0,\"z\":0}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#DDDDDD\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"shadowSize\":4,\"azimuth\":90,\"altitude\":45,\"distance\":10000},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":{\"id\":4,\"name\":\"Wires\"},\"tab\":\"3\"},\"version\":\"0.4.38\"}"
