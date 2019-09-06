@@ -14,7 +14,7 @@
         "nodes": [
             {
                 "name": "Start",
-                "id": "node_ut9xccytu6",
+                "id": "node_0gndyakh20r5",
                 "position": {
                     "x": 5340,
                     "y": 5000
@@ -59,8 +59,8 @@
                             },
                             {
                                 "name": "__input__",
-                                "value": "[50, 50]",
-                                "jsValue": "[50, 50]",
+                                "value": "[80, 80]",
+                                "jsValue": "[80, 80]",
                                 "usedVars": [],
                                 "invalidVar": false,
                                 "linked": false
@@ -91,8 +91,8 @@
                             },
                             {
                                 "name": "__input__",
-                                "value": "[2, 5]",
-                                "jsValue": "[2, 5]",
+                                "value": "[2, 2]",
+                                "jsValue": "[2, 2]",
                                 "usedVars": [],
                                 "invalidVar": false,
                                 "linked": false
@@ -124,7 +124,7 @@
                             },
                             {
                                 "name": "__input__",
-                                "value": 0.9,
+                                "value": 0.8,
                                 "linked": false,
                                 "step": "0.05",
                                 "min": "0",
@@ -155,7 +155,7 @@
                             },
                             {
                                 "name": "__input__",
-                                "value": 1,
+                                "value": 2,
                                 "step": "1",
                                 "min": "0",
                                 "max": "10"
@@ -196,7 +196,7 @@
                                 },
                                 "parentNode": {
                                     "name": "Node",
-                                    "id": "node_egxki8hhk79",
+                                    "id": "node_g8vl5ill54k",
                                     "position": {
                                         "x": 5340,
                                         "y": 5200
@@ -619,9 +619,9 @@
                                             "args": [
                                                 {
                                                     "name": "var_name",
-                                                    "value": "@divided_pgons",
+                                                    "value": "panes",
                                                     "invalidVar": false,
-                                                    "jsValue": "@divided_pgons",
+                                                    "jsValue": "panes_",
                                                     "usedVars": [],
                                                     "linked": false
                                                 },
@@ -665,7 +665,7 @@
                                             ],
                                             "selected": false,
                                             "hasError": false,
-                                            "variable": null,
+                                            "variable": "panes",
                                             "selectGeom": false
                                         },
                                         {
@@ -739,10 +739,12 @@
                                                 },
                                                 {
                                                     "name": "entities",
-                                                    "value": "@divided_pgons",
+                                                    "value": "panes",
                                                     "linked": false,
-                                                    "jsValue": "__modules__.attrib.Get(__params__.model, null, 'divided_pgons', null)",
-                                                    "usedVars": [],
+                                                    "jsValue": "panes_",
+                                                    "usedVars": [
+                                                        "panes"
+                                                    ],
                                                     "invalidVar": false
                                                 }
                                             ],
@@ -766,10 +768,12 @@
                                                 },
                                                 {
                                                     "name": "list",
-                                                    "value": "@divided_pgons",
+                                                    "value": "panes",
                                                     "linked": false,
-                                                    "jsValue": "__modules__.attrib.Get(__params__.model, null, 'divided_pgons', null)",
-                                                    "usedVars": [],
+                                                    "jsValue": "panes_",
+                                                    "usedVars": [
+                                                        "panes"
+                                                    ],
                                                     "invalidVar": false
                                                 }
                                             ],
@@ -789,38 +793,6 @@
                                                     "selected": false,
                                                     "selectGeom": false,
                                                     "hasError": false
-                                                },
-                                                {
-                                                    "type": 0,
-                                                    "parent": "~flowchart~nodes~0~output~edges~0~target~parentNode~procedure~12",
-                                                    "ID": "prod-et7ctphacrp",
-                                                    "enabled": true,
-                                                    "print": false,
-                                                    "argCount": 2,
-                                                    "args": [
-                                                        {
-                                                            "name": "var_name",
-                                                            "value": "window_pg@type",
-                                                            "linked": false,
-                                                            "invalidVar": false,
-                                                            "jsValue": "window_pg_@type",
-                                                            "usedVars": [
-                                                                "window_pg"
-                                                            ]
-                                                        },
-                                                        {
-                                                            "name": "value",
-                                                            "value": "\"window\"",
-                                                            "linked": false,
-                                                            "jsValue": "\"window\"",
-                                                            "usedVars": [],
-                                                            "invalidVar": false
-                                                        }
-                                                    ],
-                                                    "selected": false,
-                                                    "variable": null,
-                                                    "hasError": false,
-                                                    "selectGeom": false
                                                 },
                                                 {
                                                     "type": 8,
@@ -972,34 +944,6 @@
                                         },
                                         {
                                             "type": 0,
-                                            "ID": "prod-ovj2m0wiaf",
-                                            "enabled": true,
-                                            "print": false,
-                                            "argCount": 2,
-                                            "args": [
-                                                {
-                                                    "name": "var_name",
-                                                    "value": "windows",
-                                                    "invalidVar": false,
-                                                    "jsValue": "windows_",
-                                                    "linked": false
-                                                },
-                                                {
-                                                    "name": "value",
-                                                    "value": "#pg ?@type==\"window\"",
-                                                    "linked": false,
-                                                    "jsValue": "__modules__.query.Filter(__params__.model,  __modules__.query.Get(__params__.model, 'pg', null), 'type', null, '==', \"window\")",
-                                                    "usedVars": [],
-                                                    "invalidVar": false
-                                                }
-                                            ],
-                                            "selected": false,
-                                            "variable": "windows",
-                                            "hasError": false,
-                                            "selectGeom": false
-                                        },
-                                        {
-                                            "type": 0,
                                             "ID": "prod-z04vgcxgvu",
                                             "enabled": true,
                                             "print": false,
@@ -1007,12 +951,12 @@
                                             "args": [
                                                 {
                                                     "name": "var_name",
-                                                    "value": "windows@material",
+                                                    "value": "panes@material",
                                                     "linked": false,
                                                     "invalidVar": false,
-                                                    "jsValue": "windows_@material",
+                                                    "jsValue": "panes_@material",
                                                     "usedVars": [
-                                                        "windows"
+                                                        "panes"
                                                     ]
                                                 },
                                                 {
@@ -1031,87 +975,6 @@
                                         },
                                         {
                                             "type": 8,
-                                            "ID": "prod-ta0caocddh",
-                                            "enabled": true,
-                                            "print": false,
-                                            "meta": {
-                                                "module": "make",
-                                                "name": "Unweld"
-                                            },
-                                            "argCount": 3,
-                                            "args": [
-                                                {
-                                                    "name": "var_name",
-                                                    "value": "unwelded_ps",
-                                                    "linked": false,
-                                                    "invalidVar": false,
-                                                    "jsValue": "unwelded_ps_",
-                                                    "usedVars": []
-                                                },
-                                                {
-                                                    "name": "__model__",
-                                                    "linked": false
-                                                },
-                                                {
-                                                    "name": "entities",
-                                                    "value": "pg",
-                                                    "linked": false,
-                                                    "jsValue": "pg_",
-                                                    "usedVars": [
-                                                        "pg"
-                                                    ],
-                                                    "invalidVar": false
-                                                }
-                                            ],
-                                            "selected": false,
-                                            "variable": "unwelded_ps",
-                                            "hasError": false,
-                                            "selectGeom": false
-                                        },
-                                        {
-                                            "type": 8,
-                                            "ID": "prod-vld38fu922a",
-                                            "enabled": true,
-                                            "print": false,
-                                            "meta": {
-                                                "module": "modify",
-                                                "name": "Move"
-                                            },
-                                            "argCount": 4,
-                                            "args": [
-                                                {
-                                                    "name": "__none__",
-                                                    "linked": false
-                                                },
-                                                {
-                                                    "name": "__model__",
-                                                    "linked": false
-                                                },
-                                                {
-                                                    "name": "entities",
-                                                    "value": "#pg ?@type==\"window\"",
-                                                    "jsValue": "__modules__.query.Filter(__params__.model,  __modules__.query.Get(__params__.model, 'pg', null), 'type', null, '==', \"window\")",
-                                                    "usedVars": [],
-                                                    "invalidVar": false,
-                                                    "linked": false
-                                                },
-                                                {
-                                                    "name": "vectors",
-                                                    "value": "[0, 0, frame_thk / 2]",
-                                                    "linked": false,
-                                                    "invalidVar": false,
-                                                    "jsValue": "[0, 0, frame_thk_ / 2]",
-                                                    "usedVars": [
-                                                        "frame_thk"
-                                                    ]
-                                                }
-                                            ],
-                                            "selected": false,
-                                            "hasError": false,
-                                            "selectGeom": false
-                                        },
-                                        {
-                                            "type": 8,
                                             "ID": "prod-o7coxvg249q",
                                             "enabled": true,
                                             "print": false,
@@ -1123,10 +986,10 @@
                                             "args": [
                                                 {
                                                     "name": "var_name",
-                                                    "value": "x1",
+                                                    "value": "extruded",
                                                     "linked": false,
                                                     "invalidVar": false,
-                                                    "jsValue": "x1_"
+                                                    "jsValue": "extruded_"
                                                 },
                                                 {
                                                     "name": "__model__",
@@ -1170,8 +1033,91 @@
                                                 }
                                             ],
                                             "selected": false,
-                                            "variable": "x1",
+                                            "variable": "extruded",
                                             "hasError": false
+                                        },
+                                        {
+                                            "type": 8,
+                                            "ID": "prod-f2d6ucyvrv8",
+                                            "enabled": true,
+                                            "print": false,
+                                            "meta": {
+                                                "module": "make",
+                                                "name": "Unweld"
+                                            },
+                                            "argCount": 3,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "unwelded_ps",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "unwelded_ps_",
+                                                    "usedVars": []
+                                                },
+                                                {
+                                                    "name": "__model__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "entities",
+                                                    "value": "panes",
+                                                    "linked": false,
+                                                    "jsValue": "panes_",
+                                                    "usedVars": [
+                                                        "panes"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "unwelded_ps",
+                                            "hasError": false,
+                                            "selectGeom": false
+                                        },
+                                        {
+                                            "type": 8,
+                                            "ID": "prod-0irfn9du6akk",
+                                            "enabled": true,
+                                            "print": false,
+                                            "meta": {
+                                                "module": "modify",
+                                                "name": "Move"
+                                            },
+                                            "argCount": 4,
+                                            "args": [
+                                                {
+                                                    "name": "__none__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "__model__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "entities",
+                                                    "value": "panes",
+                                                    "jsValue": "panes_",
+                                                    "usedVars": [
+                                                        "panes"
+                                                    ],
+                                                    "invalidVar": false,
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "vectors",
+                                                    "value": "[0, 0, frame_thk / 2]",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "[0, 0, frame_thk_ / 2]",
+                                                    "usedVars": [
+                                                        "frame_thk"
+                                                    ]
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false,
+                                            "selectGeom": false
                                         }
                                     ],
                                     "state": {
@@ -1196,7 +1142,7 @@
                                                     },
                                                     "parentNode": {
                                                         "name": "End",
-                                                        "id": "node_q98fa4b1uke",
+                                                        "id": "node_4r3356x19dn",
                                                         "position": {
                                                             "x": 5340,
                                                             "y": 5400
@@ -1297,8 +1243,8 @@
         ],
         "functions": [],
         "ordered": true,
-        "last_updated": "2019-09-06T07:25:20.503Z"
+        "last_updated": "2019-09-06T07:34:51.742Z"
     },
     "version": 1,
-    "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500},\"positions\":{\"show\":true,\"size\":0.5},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":false},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-80,\"y\":-80,\"z\":80},\"pos_x\":-80,\"pos_y\":-80,\"pos_z\":80,\"target\":{\"x\":0,\"y\":0,\"z\":0}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#DDDDDD\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"shadowSize\":4,\"azimuth\":90,\"altitude\":45,\"distance\":10000},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":{\"id\":4,\"name\":\"Wires\"},\"tab\":\"3\"},\"version\":\"0.4.38\"}"
+    "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500},\"positions\":{\"show\":true,\"size\":0.5},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":false},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-80,\"y\":-80,\"z\":80},\"pos_x\":-80,\"pos_y\":-80,\"pos_z\":80,\"target\":{\"x\":0,\"y\":0,\"z\":0}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#DDDDDD\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"shadowSize\":4,\"azimuth\":90,\"altitude\":45,\"distance\":10000},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":{\"id\":4,\"name\":\"Wires\"},\"tab\":\"7\"},\"version\":\"0.4.38\"}"
 }
