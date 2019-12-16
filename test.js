@@ -243,4 +243,4 @@ if (result === __params__.model) { return { "model": __params__.model, "result":
 return {"model": __params__.model, "result": result};
 }
 
-module.exports = test_stair;
+exports.func = test_stair;
