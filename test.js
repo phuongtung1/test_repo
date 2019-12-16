@@ -243,4 +243,5 @@ if (result === __params__.model) { return { "model": __params__.model, "result":
 return {"model": __params__.model, "result": result};
 }
 
-exports.func = test_stair;
+const func = test_stair;
+export default test_stair;
