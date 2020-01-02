@@ -1,5 +1,5 @@
 {
-    "name": "Four Squares",
+    "name": "w1_s6_u1_assign_4squares_base",
     "author": "new_user",
     "flowchart": {
         "id": "1f88dac8-5c6d-9ebc-68b8-3a01a04499bf",
@@ -14,7 +14,7 @@
         "nodes": [
             {
                 "name": "Start",
-                "id": "node_540siwwg8x",
+                "id": "node_cq3l00tc3fh",
                 "position": {
                     "x": 5340,
                     "y": 5000
@@ -88,7 +88,7 @@
                                 },
                                 "parentNode": {
                                     "name": "Node",
-                                    "id": "node_ft3zvjuz1vw",
+                                    "id": "node_uesjctowols",
                                     "position": {
                                         "x": 5340,
                                         "y": 5200
@@ -548,17 +548,13 @@
                                                 },
                                                 {
                                                     "name": "entities",
-                                                    "value": "[ps1, ps2, ps3, ps6, ps9, ps8, ps7, ps4]",
+                                                    "value": "[ps1, ps3, ps9, ps7]",
                                                     "linked": false,
-                                                    "jsValue": "[ps1_, ps2_, ps3_, ps6_, ps9_, ps8_, ps7_, ps4_]",
+                                                    "jsValue": "[ps1_, ps3_, ps9_, ps7_]",
                                                     "usedVars": [
                                                         "ps1",
-                                                        "ps2",
                                                         "ps3",
-                                                        "ps4",
-                                                        "ps6",
                                                         "ps7",
-                                                        "ps8",
                                                         "ps9"
                                                     ],
                                                     "invalidVar": false
@@ -600,12 +596,11 @@
                                                 },
                                                 {
                                                     "name": "entities",
-                                                    "value": "[ps4, ps5, ps6]",
+                                                    "value": "[ps4, ps6]",
                                                     "linked": false,
-                                                    "jsValue": "[ps4_, ps5_, ps6_]",
+                                                    "jsValue": "[ps4_, ps6_]",
                                                     "usedVars": [
                                                         "ps4",
-                                                        "ps5",
                                                         "ps6"
                                                     ],
                                                     "invalidVar": false
@@ -648,12 +643,11 @@
                                                 },
                                                 {
                                                     "name": "entities",
-                                                    "value": "[ps2, ps5, ps8]",
+                                                    "value": "[ps2, ps8]",
                                                     "linked": false,
-                                                    "jsValue": "[ps2_, ps5_, ps8_]",
+                                                    "jsValue": "[ps2_, ps8_]",
                                                     "usedVars": [
                                                         "ps2",
-                                                        "ps5",
                                                         "ps8"
                                                     ],
                                                     "invalidVar": false
@@ -714,7 +708,7 @@
                                                     },
                                                     "parentNode": {
                                                         "name": "End",
-                                                        "id": "node_t71zh8ie3j",
+                                                        "id": "node_ph7amzx2u1q",
                                                         "position": {
                                                             "x": 5340,
                                                             "y": 5400
@@ -834,8 +828,8 @@
         ],
         "functions": [],
         "ordered": true,
-        "last_updated": "2020-01-02T05:50:12.918Z"
+        "last_updated": "2020-01-02T05:47:27.599Z"
     },
     "version": "0.5.12",
-    "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500,\"pos_x\":0,\"pos_y\":0,\"pos_z\":0,\"pos\":{\"x\":0,\"y\":0,\"z\":0}},\"background\":{\"show\":true,\"background_set\":0},\"positions\":{\"show\":true,\"size\":5},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":true},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-23.195153424683987,\"y\":-22.684213002978957,\"z\":31.138881809589922},\"pos_x\":-23.195153424683987,\"pos_y\":-22.684213002978957,\"pos_z\":31.138881809589922,\"target\":{\"x\":12.707335416784268,\"y\":9.387231655866307,\"z\":10.732217056833239}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#DDDDDD\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"azimuth\":90,\"altitude\":45,\"distance\":10,\"type\":\"directional\"},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":{\"id\":0,\"name\":\"Positions\"},\"tab\":\"3\"},\"version\":\"0.4.38\"}"
+    "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500,\"pos_x\":0,\"pos_y\":0,\"pos_z\":0,\"pos\":{\"x\":0,\"y\":0,\"z\":0}},\"background\":{\"show\":true,\"background_set\":0},\"positions\":{\"show\":true,\"size\":5},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":true},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-23.195153424683987,\"y\":-22.684213002978957,\"z\":31.138881809589922},\"pos_x\":-23.195153424683987,\"pos_y\":-22.684213002978957,\"pos_z\":31.138881809589922,\"target\":{\"x\":12.707335416784268,\"y\":9.387231655866307,\"z\":10.732217056833239}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#DDDDDD\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"azimuth\":90,\"altitude\":45,\"distance\":10,\"type\":\"directional\"},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":{\"id\":0,\"name\":\"Positions\"},\"tab\":7},\"version\":\"0.4.38\"}"
 }
