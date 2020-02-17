@@ -1,0 +1,1456 @@
+{
+    "name": "w2_s7_u2_assign_building_base",
+    "author": "new_user",
+    "flowchart": {
+        "id": "c8827c06-f35e-2a29-8393-18f07a4ea002",
+        "name": "Podium Tower",
+        "description": "Podium with tower with parameters for setting various dimensions.\n\npod_height: [6,12,18]\npod_length: [30, 40, 50]\npod_width: [20, 30, 40]\npod_floor_height: [4, 5, 6]\ntower_length: [20, 30, 40]\ntower_width: [10, 15, 20]\ntower_height: [20, 30, 40]\ntower_floor_height: [2.2, 2.7, 3.1]",
+        "language": "js",
+        "meta": {
+            "selected_nodes": [
+                0
+            ]
+        },
+        "nodes": [
+            {
+                "name": "Start",
+                "id": "node_vzns5mmz7ym",
+                "position": {
+                    "x": 5340,
+                    "y": 5000
+                },
+                "enabled": true,
+                "type": "start",
+                "procedure": [
+                    {
+                        "type": 13,
+                        "ID": "",
+                        "meta": {
+                            "name": "",
+                            "module": ""
+                        },
+                        "argCount": 0,
+                        "args": [],
+                        "print": false,
+                        "enabled": true,
+                        "selected": false,
+                        "selectGeom": false,
+                        "hasError": false
+                    },
+                    {
+                        "type": 10,
+                        "ID": "prod-l7qmc8ibi8p",
+                        "enabled": true,
+                        "print": false,
+                        "argCount": 2,
+                        "meta": {
+                            "module": "Input",
+                            "name": "Constant",
+                            "inputMode": 1,
+                            "description": "Total height of podium."
+                        },
+                        "args": [
+                            {
+                                "name": "const_name",
+                                "value": "pod_height",
+                                "jsValue": "pod_height_",
+                                "invalidVar": false,
+                                "linked": false
+                            },
+                            {
+                                "name": "__input__",
+                                "value": 5,
+                                "min": "0",
+                                "step": "1",
+                                "max": "30",
+                                "linked": false
+                            }
+                        ],
+                        "selected": false,
+                        "hasError": false
+                    },
+                    {
+                        "type": 10,
+                        "ID": "prod-2sza92yd8i6",
+                        "enabled": true,
+                        "print": false,
+                        "argCount": 2,
+                        "meta": {
+                            "module": "Input",
+                            "name": "Constant",
+                            "inputMode": 1,
+                            "description": "Length of podium."
+                        },
+                        "args": [
+                            {
+                                "name": "const_name",
+                                "value": "pod_length",
+                                "jsValue": "pod_length_",
+                                "invalidVar": false,
+                                "linked": false
+                            },
+                            {
+                                "name": "__input__",
+                                "value": 30,
+                                "min": "0",
+                                "step": "1",
+                                "max": "100",
+                                "linked": false
+                            }
+                        ],
+                        "selected": false,
+                        "selectGeom": false,
+                        "hasError": false
+                    },
+                    {
+                        "type": 10,
+                        "ID": "prod-fwe69wdn50o",
+                        "enabled": true,
+                        "print": false,
+                        "argCount": 2,
+                        "meta": {
+                            "module": "Input",
+                            "name": "Constant",
+                            "inputMode": 1,
+                            "description": "Width of podium."
+                        },
+                        "args": [
+                            {
+                                "name": "const_name",
+                                "value": "pod_width",
+                                "jsValue": "pod_width_",
+                                "invalidVar": false,
+                                "linked": false
+                            },
+                            {
+                                "name": "__input__",
+                                "value": 20,
+                                "step": "1",
+                                "min": "0",
+                                "max": "100",
+                                "linked": false
+                            }
+                        ],
+                        "selected": false,
+                        "hasError": false
+                    },
+                    {
+                        "type": 10,
+                        "ID": "prod-7751gfablu9",
+                        "enabled": true,
+                        "print": false,
+                        "argCount": 2,
+                        "meta": {
+                            "module": "Input",
+                            "name": "Constant",
+                            "inputMode": 1,
+                            "description": "Height of each floor within the podium."
+                        },
+                        "args": [
+                            {
+                                "name": "const_name",
+                                "value": "pod_floor_height",
+                                "jsValue": "pod_floor_height_",
+                                "invalidVar": false,
+                                "linked": false
+                            },
+                            {
+                                "name": "__input__",
+                                "value": 6,
+                                "step": "1",
+                                "min": "0",
+                                "max": "10",
+                                "linked": false
+                            }
+                        ],
+                        "selected": false,
+                        "selectGeom": false,
+                        "hasError": false
+                    },
+                    {
+                        "type": 10,
+                        "ID": "prod-admxyrf33li",
+                        "enabled": true,
+                        "print": false,
+                        "argCount": 2,
+                        "meta": {
+                            "module": "Input",
+                            "name": "Constant",
+                            "inputMode": 1,
+                            "description": "Total height of tower, from the tower base to the top of the tower."
+                        },
+                        "args": [
+                            {
+                                "name": "const_name",
+                                "value": "tower_height",
+                                "jsValue": "tower_height_",
+                                "invalidVar": false,
+                                "linked": false
+                            },
+                            {
+                                "name": "__input__",
+                                "value": 30,
+                                "step": "1",
+                                "min": "0",
+                                "max": "100",
+                                "linked": false
+                            }
+                        ],
+                        "selected": false,
+                        "selectGeom": false,
+                        "hasError": false
+                    },
+                    {
+                        "type": 10,
+                        "ID": "prod-ddg0rrv1dli",
+                        "enabled": true,
+                        "print": false,
+                        "argCount": 2,
+                        "meta": {
+                            "module": "Input",
+                            "name": "Constant",
+                            "inputMode": 1,
+                            "description": "Length of tower."
+                        },
+                        "args": [
+                            {
+                                "name": "const_name",
+                                "value": "tower_length",
+                                "jsValue": "tower_length_",
+                                "invalidVar": false,
+                                "linked": false
+                            },
+                            {
+                                "name": "__input__",
+                                "value": 20,
+                                "step": "1",
+                                "min": "0",
+                                "max": "100",
+                                "linked": false
+                            }
+                        ],
+                        "selected": false,
+                        "hasError": false
+                    },
+                    {
+                        "type": 10,
+                        "ID": "prod-skuh2fijzj9",
+                        "enabled": true,
+                        "print": false,
+                        "argCount": 2,
+                        "meta": {
+                            "module": "Input",
+                            "name": "Constant",
+                            "inputMode": 1,
+                            "description": "Width of tower."
+                        },
+                        "args": [
+                            {
+                                "name": "const_name",
+                                "value": "tower_width",
+                                "jsValue": "tower_width_",
+                                "invalidVar": false,
+                                "linked": false
+                            },
+                            {
+                                "name": "__input__",
+                                "value": 10,
+                                "step": "1",
+                                "min": "0",
+                                "max": "100",
+                                "linked": false
+                            }
+                        ],
+                        "selected": false,
+                        "selectGeom": false,
+                        "hasError": false
+                    },
+                    {
+                        "type": 10,
+                        "ID": "prod-6j1cpftvk45",
+                        "enabled": true,
+                        "print": false,
+                        "argCount": 2,
+                        "meta": {
+                            "module": "Input",
+                            "name": "Constant",
+                            "inputMode": 1,
+                            "description": "Height of each floor within the tower."
+                        },
+                        "args": [
+                            {
+                                "name": "const_name",
+                                "value": "tower_floor_height",
+                                "jsValue": "tower_floor_height_",
+                                "invalidVar": false,
+                                "linked": false
+                            },
+                            {
+                                "name": "__input__",
+                                "value": 2.7,
+                                "step": "0.1",
+                                "min": "0",
+                                "max": "10",
+                                "linked": false
+                            }
+                        ],
+                        "selected": false,
+                        "hasError": false
+                    }
+                ],
+                "localFunc": [
+                    {
+                        "type": 13,
+                        "ID": "local_func_blank",
+                        "meta": {
+                            "name": "",
+                            "module": ""
+                        },
+                        "argCount": 0,
+                        "args": [],
+                        "print": false,
+                        "enabled": true,
+                        "selected": false,
+                        "selectGeom": false,
+                        "hasError": false
+                    }
+                ],
+                "state": {
+                    "procedure": [],
+                    "show_code": false,
+                    "show_func": false
+                },
+                "input": {
+                    "name": "input",
+                    "type": 0,
+                    "edges": [],
+                    "meta": {
+                        "mode": 0,
+                        "opts": {}
+                    },
+                    "parentNode": "~flowchart~nodes~0"
+                },
+                "output": {
+                    "name": "output",
+                    "type": 1,
+                    "edges": [
+                        {
+                            "source": "~flowchart~nodes~0~output",
+                            "target": {
+                                "name": "input",
+                                "type": 0,
+                                "edges": [
+                                    "~flowchart~nodes~0~output~edges~0"
+                                ],
+                                "meta": {
+                                    "mode": 0,
+                                    "opts": {}
+                                },
+                                "parentNode": {
+                                    "name": "Node",
+                                    "id": "node_jyq4iag7c2",
+                                    "position": {
+                                        "x": 5340,
+                                        "y": 5200
+                                    },
+                                    "enabled": true,
+                                    "type": "",
+                                    "procedure": [
+                                        {
+                                            "type": 13,
+                                            "ID": "",
+                                            "meta": {
+                                                "name": "",
+                                                "module": ""
+                                            },
+                                            "argCount": 0,
+                                            "args": [],
+                                            "print": false,
+                                            "enabled": true,
+                                            "selected": false,
+                                            "selectGeom": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-y87jj5bt99j",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Calc the number of floors our podium will have. ",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-kaqcqyqbkef",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Use of inline function ceil() to round up to the nearest integer. ",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-g8n6o5pt1zo",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_num_floors",
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_num_floors_",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "ceil(pod_height / pod_floor_height)",
+                                                    "linked": false,
+                                                    "jsValue": "ceil(pod_height_ / pod_floor_height_)",
+                                                    "usedVars": [
+                                                        "pod_floor_height",
+                                                        "pod_height"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_num_floors",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-529o2sz5dot",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Create 4 positions for base of podium, polygon and extrude to create podium. ",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-ok57sgbs0na",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_length_half",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_length_half_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "pod_length / 2",
+                                                    "linked": false,
+                                                    "jsValue": "pod_length_ / 2",
+                                                    "usedVars": [
+                                                        "pod_length"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_length_half",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-3koq34iez8h",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_width_half",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_width_half_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "pod_width / 2",
+                                                    "linked": false,
+                                                    "jsValue": "pod_width_ / 2",
+                                                    "usedVars": [
+                                                        "pod_width"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_width_half",
+                                            "selectGeom": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-ewxayfal6w5",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_pos1",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_pos1_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "[-pod_length_half, -pod_width_half, 0]",
+                                                    "linked": false,
+                                                    "jsValue": "[-pod_length_half_, -pod_width_half_, 0]",
+                                                    "usedVars": [
+                                                        "pod_length_half",
+                                                        "pod_width_half"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_pos1",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-hregaxybxp",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_pos2",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_pos2_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "[pod_length_half, -pod_width_half, 0]",
+                                                    "linked": false,
+                                                    "jsValue": "[pod_length_half_, -pod_width_half_, 0]",
+                                                    "usedVars": [
+                                                        "pod_length_half",
+                                                        "pod_width_half"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_pos2",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-cg8ege8zaa",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_pos3",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_pos3_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "[pod_length_half, pod_width_half, 0]",
+                                                    "linked": false,
+                                                    "jsValue": "[pod_length_half_, pod_width_half_, 0]",
+                                                    "usedVars": [
+                                                        "pod_length_half",
+                                                        "pod_width_half"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_pos3",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-1ltgjta6g1i",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_pos4",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_pos4_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "[-pod_length_half, pod_width_half, 0]",
+                                                    "linked": false,
+                                                    "jsValue": "[-pod_length_half_, pod_width_half_, 0]",
+                                                    "usedVars": [
+                                                        "pod_length_half",
+                                                        "pod_width_half"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_pos4",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-0ewxdejwmep",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Create a list of 4 positions for the podium base",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 8,
+                                            "ID": "prod-5l27feobr5p",
+                                            "enabled": true,
+                                            "print": false,
+                                            "meta": {
+                                                "module": "make",
+                                                "name": "Position"
+                                            },
+                                            "argCount": 3,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_pos",
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_pos_",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "__model__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "coords",
+                                                    "value": "[pod_pos1, pod_pos2, pod_pos3, pod_pos4]",
+                                                    "linked": false,
+                                                    "jsValue": "[pod_pos1_, pod_pos2_, pod_pos3_, pod_pos4_]",
+                                                    "invalidVar": false,
+                                                    "usedVars": [
+                                                        "pod_pos1",
+                                                        "pod_pos2",
+                                                        "pod_pos3",
+                                                        "pod_pos4"
+                                                    ]
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_pos",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-iip9asf24b",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Create podium polygon.",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 8,
+                                            "ID": "prod-npo0uefy5u",
+                                            "enabled": true,
+                                            "print": false,
+                                            "meta": {
+                                                "module": "make",
+                                                "name": "Polygon"
+                                            },
+                                            "argCount": 3,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_pgon",
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_pgon_",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "__model__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "entities",
+                                                    "value": "pod_pos",
+                                                    "linked": false,
+                                                    "jsValue": "pod_pos_",
+                                                    "usedVars": [
+                                                        "pod_pos"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_pgon",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-aobyy4q10m7",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Extrude podium polygon.",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 8,
+                                            "ID": "prod-sx3oq4lrcp",
+                                            "enabled": true,
+                                            "print": false,
+                                            "meta": {
+                                                "module": "make",
+                                                "name": "Extrude"
+                                            },
+                                            "argCount": 6,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "pod_ext",
+                                                    "invalidVar": false,
+                                                    "jsValue": "pod_ext_",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "__model__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "entities",
+                                                    "value": "pod_pgon",
+                                                    "linked": false,
+                                                    "jsValue": "pod_pgon_",
+                                                    "usedVars": [
+                                                        "pod_pgon"
+                                                    ],
+                                                    "invalidVar": false
+                                                },
+                                                {
+                                                    "name": "dist",
+                                                    "value": "pod_height",
+                                                    "linked": false,
+                                                    "jsValue": "pod_height_",
+                                                    "usedVars": [
+                                                        "pod_height"
+                                                    ],
+                                                    "invalidVar": false
+                                                },
+                                                {
+                                                    "name": "divisions",
+                                                    "value": "pod_num_floors",
+                                                    "linked": false,
+                                                    "jsValue": "pod_num_floors_",
+                                                    "invalidVar": false,
+                                                    "usedVars": [
+                                                        "pod_num_floors"
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "method",
+                                                    "value": "'quads'",
+                                                    "jsValue": "'quads'",
+                                                    "usedVars": [],
+                                                    "invalidVar": false,
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "pod_ext",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-6rkk4zko8a",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Calc the number of floors our tower will have. ",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-xltcv5nvk0l",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Use of inline function ceil() to round up to the nearest integer. ",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-a1cnyxvlup",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "### EDIT NEXT LINES ###",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-mb7zeexxw5",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_num_floors",
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_num_floors_",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "ceil(tower_height / tower_floor_height)",
+                                                    "linked": false,
+                                                    "jsValue": "ceil(tower_height_ / tower_floor_height_)",
+                                                    "usedVars": [
+                                                        "tower_floor_height",
+                                                        "tower_height"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_num_floors",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-u3pt8cc9j2",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Create 4 positions for the base of the tower. ",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-5jc1tutwqx3",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_length_half",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_length_half_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "tower_length / 2",
+                                                    "linked": false,
+                                                    "jsValue": "tower_length_ / 2",
+                                                    "usedVars": [
+                                                        "tower_length"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_length_half",
+                                            "hasError": false,
+                                            "selectGeom": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-6bgg69e694f",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_width_half",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_width_half_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "tower_width / 2",
+                                                    "linked": false,
+                                                    "jsValue": "tower_width_ / 2",
+                                                    "usedVars": [
+                                                        "tower_width"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_width_half",
+                                            "selectGeom": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-vnd3zedm5q",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_pos1",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_pos1_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "[-tower_length_half, -tower_width_half, pod_height]",
+                                                    "linked": false,
+                                                    "jsValue": "[-tower_length_half_, -tower_width_half_, pod_height_]",
+                                                    "usedVars": [
+                                                        "pod_height",
+                                                        "tower_length_half",
+                                                        "tower_width_half"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_pos1",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-cnmm44r4q1",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_pos2",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_pos2_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "[tower_length_half, -tower_width_half, pod_height]",
+                                                    "linked": false,
+                                                    "jsValue": "[tower_length_half_, -tower_width_half_, pod_height_]",
+                                                    "usedVars": [
+                                                        "pod_height",
+                                                        "tower_length_half",
+                                                        "tower_width_half"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_pos2",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-bn8qsvcl6hk",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_pos3",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_pos3_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "[tower_length_half, tower_width_half, pod_height]",
+                                                    "linked": false,
+                                                    "jsValue": "[tower_length_half_, tower_width_half_, pod_height_]",
+                                                    "usedVars": [
+                                                        "pod_height",
+                                                        "tower_length_half",
+                                                        "tower_width_half"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_pos3",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 0,
+                                            "ID": "prod-636ht5thci7",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 2,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_pos4",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_pos4_"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "value": "[-tower_length_half, tower_width_half, pod_height]",
+                                                    "linked": false,
+                                                    "jsValue": "[-tower_length_half_, tower_width_half_, pod_height_]",
+                                                    "usedVars": [
+                                                        "pod_height",
+                                                        "tower_length_half",
+                                                        "tower_width_half"
+                                                    ],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_pos4",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-e9os7hv80s",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Create a list of 4 positions for the tower base",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 8,
+                                            "ID": "prod-zjzggyfzgrj",
+                                            "enabled": true,
+                                            "print": false,
+                                            "meta": {
+                                                "module": "make",
+                                                "name": "Position"
+                                            },
+                                            "argCount": 3,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_pos",
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_pos_",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "__model__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "coords",
+                                                    "value": "[tower_pos1, tower_pos2, tower_pos3, tower_pos4]",
+                                                    "jsValue": "[tower_pos1_, tower_pos2_, tower_pos3_, tower_pos4_]",
+                                                    "usedVars": [
+                                                        "tower_pos1",
+                                                        "tower_pos2",
+                                                        "tower_pos3",
+                                                        "tower_pos4"
+                                                    ],
+                                                    "invalidVar": false,
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_pos",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-h5i1vygxh7f",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Create tower polygon.",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 8,
+                                            "ID": "prod-r0sgavgzxmi",
+                                            "enabled": true,
+                                            "print": false,
+                                            "meta": {
+                                                "module": "make",
+                                                "name": "Polygon"
+                                            },
+                                            "argCount": 3,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_pgon",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_pgon_"
+                                                },
+                                                {
+                                                    "name": "__model__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "entities",
+                                                    "value": "tower_pos",
+                                                    "jsValue": "tower_pos_",
+                                                    "usedVars": [
+                                                        "tower_pos"
+                                                    ],
+                                                    "invalidVar": false,
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_pgon",
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 14,
+                                            "ID": "prod-otgyy46uvs8",
+                                            "enabled": true,
+                                            "print": false,
+                                            "argCount": 1,
+                                            "args": [
+                                                {
+                                                    "name": "comment",
+                                                    "value": "Extrude tower polygon.",
+                                                    "linked": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "hasError": false
+                                        },
+                                        {
+                                            "type": 8,
+                                            "ID": "prod-nzjxd2wj07",
+                                            "enabled": true,
+                                            "print": false,
+                                            "meta": {
+                                                "module": "make",
+                                                "name": "Extrude"
+                                            },
+                                            "argCount": 6,
+                                            "args": [
+                                                {
+                                                    "name": "var_name",
+                                                    "value": "tower_ext",
+                                                    "linked": false,
+                                                    "invalidVar": false,
+                                                    "jsValue": "tower_ext_"
+                                                },
+                                                {
+                                                    "name": "__model__",
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "entities",
+                                                    "value": "tower_pgon",
+                                                    "jsValue": "tower_pgon_",
+                                                    "usedVars": [
+                                                        "tower_pgon"
+                                                    ],
+                                                    "invalidVar": false,
+                                                    "linked": false
+                                                },
+                                                {
+                                                    "name": "dist",
+                                                    "value": "tower_height",
+                                                    "linked": false,
+                                                    "jsValue": "tower_height_",
+                                                    "usedVars": [
+                                                        "tower_height"
+                                                    ],
+                                                    "invalidVar": false
+                                                },
+                                                {
+                                                    "name": "divisions",
+                                                    "value": "tower_num_floors",
+                                                    "linked": false,
+                                                    "jsValue": "tower_num_floors_",
+                                                    "usedVars": [
+                                                        "tower_num_floors"
+                                                    ],
+                                                    "invalidVar": false
+                                                },
+                                                {
+                                                    "name": "method",
+                                                    "value": "'quads'",
+                                                    "jsValue": "'quads'",
+                                                    "linked": false,
+                                                    "usedVars": [],
+                                                    "invalidVar": false
+                                                }
+                                            ],
+                                            "selected": false,
+                                            "variable": "tower_ext",
+                                            "hasError": false
+                                        }
+                                    ],
+                                    "localFunc": [
+                                        {
+                                            "type": 13,
+                                            "ID": "local_func_blank",
+                                            "meta": {
+                                                "name": "",
+                                                "module": ""
+                                            },
+                                            "argCount": 0,
+                                            "args": [],
+                                            "print": false,
+                                            "enabled": true,
+                                            "selected": false,
+                                            "selectGeom": false,
+                                            "hasError": false
+                                        }
+                                    ],
+                                    "state": {
+                                        "procedure": [],
+                                        "show_code": true,
+                                        "show_func": true
+                                    },
+                                    "input": "~flowchart~nodes~0~output~edges~0~target",
+                                    "output": {
+                                        "name": "output",
+                                        "type": 1,
+                                        "edges": [
+                                            {
+                                                "source": "~flowchart~nodes~0~output~edges~0~target~parentNode~output",
+                                                "target": {
+                                                    "name": "input",
+                                                    "type": 0,
+                                                    "edges": [
+                                                        "~flowchart~nodes~0~output~edges~0~target~parentNode~output~edges~0"
+                                                    ],
+                                                    "meta": {
+                                                        "mode": 0,
+                                                        "opts": {}
+                                                    },
+                                                    "parentNode": {
+                                                        "name": "End",
+                                                        "id": "node_ayiip7zi6a",
+                                                        "position": {
+                                                            "x": 5340,
+                                                            "y": 5400
+                                                        },
+                                                        "enabled": true,
+                                                        "type": "end",
+                                                        "procedure": [
+                                                            {
+                                                                "type": 13,
+                                                                "ID": "",
+                                                                "meta": {
+                                                                    "name": "",
+                                                                    "module": ""
+                                                                },
+                                                                "argCount": 0,
+                                                                "args": [],
+                                                                "print": false,
+                                                                "enabled": true,
+                                                                "selected": false,
+                                                                "selectGeom": false,
+                                                                "hasError": false
+                                                            },
+                                                            {
+                                                                "type": 11,
+                                                                "ID": "Return",
+                                                                "meta": {
+                                                                    "name": "",
+                                                                    "module": ""
+                                                                },
+                                                                "argCount": 2,
+                                                                "args": [
+                                                                    {
+                                                                        "name": "__model__",
+                                                                        "value": "",
+                                                                        "jsValue": "",
+                                                                        "linked": false
+                                                                    },
+                                                                    {
+                                                                        "name": "value",
+                                                                        "value": "",
+                                                                        "jsValue": "",
+                                                                        "linked": false,
+                                                                        "usedVars": []
+                                                                    }
+                                                                ],
+                                                                "print": false,
+                                                                "enabled": true,
+                                                                "selected": false,
+                                                                "selectGeom": false,
+                                                                "hasError": false
+                                                            }
+                                                        ],
+                                                        "localFunc": [
+                                                            {
+                                                                "type": 13,
+                                                                "ID": "local_func_blank",
+                                                                "meta": {
+                                                                    "name": "",
+                                                                    "module": ""
+                                                                },
+                                                                "argCount": 0,
+                                                                "args": [],
+                                                                "print": false,
+                                                                "enabled": true,
+                                                                "selected": false,
+                                                                "selectGeom": false,
+                                                                "hasError": false
+                                                            }
+                                                        ],
+                                                        "state": {
+                                                            "procedure": [],
+                                                            "show_code": true,
+                                                            "show_func": true
+                                                        },
+                                                        "input": "~flowchart~nodes~0~output~edges~0~target~parentNode~output~edges~0~target",
+                                                        "output": {
+                                                            "name": "output",
+                                                            "type": 1,
+                                                            "edges": [],
+                                                            "meta": {
+                                                                "mode": 0
+                                                            },
+                                                            "parentNode": "~flowchart~nodes~0~output~edges~0~target~parentNode~output~edges~0~target~parentNode"
+                                                        },
+                                                        "hasError": false,
+                                                        "hasExecuted": true
+                                                    }
+                                                },
+                                                "selected": false
+                                            }
+                                        ],
+                                        "meta": {
+                                            "mode": 0
+                                        },
+                                        "parentNode": "~flowchart~nodes~0~output~edges~0~target~parentNode"
+                                    },
+                                    "hasError": false,
+                                    "hasExecuted": true
+                                }
+                            },
+                            "selected": false
+                        }
+                    ],
+                    "meta": {
+                        "mode": 0
+                    },
+                    "parentNode": "~flowchart~nodes~0"
+                },
+                "hasError": false,
+                "hasExecuted": true
+            },
+            "~flowchart~nodes~0~output~edges~0~target~parentNode",
+            "~flowchart~nodes~0~output~edges~0~target~parentNode~output~edges~0~target~parentNode"
+        ],
+        "edges": [
+            "~flowchart~nodes~0~output~edges~0",
+            "~flowchart~nodes~0~output~edges~0~target~parentNode~output~edges~0"
+        ],
+        "functions": [],
+        "ordered": true,
+        "last_updated": "2020-02-15T06:02:04.616Z"
+    },
+    "version": "0.5.24",
+    "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500,\"pos_x\":0,\"pos_y\":0,\"pos_z\":0,\"pos\":{\"x\":0,\"y\":0,\"z\":0}},\"background\":{\"show\":true,\"background_set\":0},\"positions\":{\"show\":false,\"size\":7},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":true},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-34.39052363046702,\"y\":-40.96551424347531,\"z\":41.97552348768453},\"pos_x\":-34.39052363046702,\"pos_y\":-40.96551424347531,\"pos_z\":41.97552348768453,\"target\":{\"x\":3.0443083271504268,\"y\":5.284725000340063,\"z\":11.926681413178748}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#DDDDDD\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"azimuth\":90,\"altitude\":45,\"distance\":10,\"type\":\"directional\"},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":null,\"tab\":\"0\"},\"version\":\"0.4.38\"}"
+}
