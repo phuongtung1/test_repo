@@ -1,5 +1,5 @@
 {
-    "name": "w3_s6_u2_w3_coding_assign_base (1)",
+    "name": "w3_s6_u2_w3_coding_assign_base",
     "author": "new_user",
     "flowchart": {
         "id": "8411bd50-ed46-75aa-6ed8-b97fe323ca5b",
@@ -14,7 +14,7 @@
         "nodes": [
             {
                 "name": "Start",
-                "id": "node_f6y1yzlyqm",
+                "id": "node_rmn6kmcirbd",
                 "position": {
                     "x": 5200,
                     "y": 4820
@@ -184,7 +184,7 @@
                                 },
                                 "parentNode": {
                                     "name": "Skeleton Base",
-                                    "id": "node_u0hg6sc293h",
+                                    "id": "node_1pz9hcc3aln",
                                     "position": {
                                         "x": 5200,
                                         "y": 4920
@@ -492,16 +492,6 @@
                                             "hasError": false
                                         },
                                         {
-                                            "type": 15,
-                                            "ID": "prod-igdkywm5cbj",
-                                            "enabled": false,
-                                            "print": false,
-                                            "argCount": 0,
-                                            "args": [],
-                                            "selected": false,
-                                            "hasError": false
-                                        },
-                                        {
                                             "type": 8,
                                             "ID": "prod-n5mo0kmfhuc",
                                             "enabled": true,
@@ -535,10 +525,10 @@
                                                 },
                                                 {
                                                     "name": "name",
-                                                    "value": "'base'",
+                                                    "value": "\"beveled_pgon\"",
                                                     "usedVars": [],
                                                     "linked": false,
-                                                    "jsValue": "'base'",
+                                                    "jsValue": "\"beveled_pgon\"",
                                                     "invalidVar": false
                                                 }
                                             ],
@@ -563,6 +553,15 @@
                                             "selected": false,
                                             "selectGeom": false,
                                             "hasError": false
+                                        },
+                                        {
+                                            "type": 15,
+                                            "ID": "prod-6p4ym18gtvy",
+                                            "enabled": false,
+                                            "print": false,
+                                            "argCount": 0,
+                                            "args": [],
+                                            "selected": false
                                         }
                                     ],
                                     "localFunc": [
@@ -1241,10 +1240,10 @@
                                                     },
                                                     "parentNode": {
                                                         "name": "Skeleton\nWave",
-                                                        "id": "node_5ovz05dqarc",
+                                                        "id": "node_7lx2e5kkgnh",
                                                         "position": {
                                                             "x": 5280,
-                                                            "y": 5040
+                                                            "y": 5020
                                                         },
                                                         "enabled": true,
                                                         "type": "",
@@ -1339,9 +1338,9 @@
                                                                     },
                                                                     {
                                                                         "name": "names",
-                                                                        "value": "'base'",
+                                                                        "value": "\"beveled_pgon\"",
                                                                         "usedVars": [],
-                                                                        "jsValue": "'base'",
+                                                                        "jsValue": "\"beveled_pgon\"",
                                                                         "invalidVar": false,
                                                                         "linked": false
                                                                     }
@@ -1910,6 +1909,15 @@
                                                                 "hasError": false
                                                             },
                                                             {
+                                                                "type": 15,
+                                                                "ID": "prod-wyvv9teqt4k",
+                                                                "enabled": false,
+                                                                "print": false,
+                                                                "argCount": 0,
+                                                                "args": [],
+                                                                "selected": false
+                                                            },
+                                                            {
                                                                 "type": 14,
                                                                 "ID": "prod-zo70s2x78v",
                                                                 "enabled": true,
@@ -1960,9 +1968,9 @@
                                                                     },
                                                                     {
                                                                         "name": "name",
-                                                                        "value": "'wave'",
+                                                                        "value": "\"corner\"",
                                                                         "usedVars": [],
-                                                                        "jsValue": "'wave'",
+                                                                        "jsValue": "\"corner\"",
                                                                         "invalidVar": false,
                                                                         "linked": false
                                                                     }
@@ -2905,7 +2913,7 @@
                                                                     "otherInfo": {
                                                                         "prev_name": "AddNormals",
                                                                         "num_returns": 0,
-                                                                        "collapsed": false
+                                                                        "collapsed": true
                                                                     }
                                                                 },
                                                                 "args": [
@@ -3265,9 +3273,9 @@
                                                                         },
                                                                         "parentNode": {
                                                                             "name": "Panels",
-                                                                            "id": "node_84tsl693ta6",
+                                                                            "id": "node_jbttnhdfir",
                                                                             "position": {
-                                                                                "x": 5180,
+                                                                                "x": 5200,
                                                                                 "y": 5180
                                                                             },
                                                                             "enabled": true,
@@ -3340,6 +3348,15 @@
                                                                                     "hasError": false
                                                                                 },
                                                                                 {
+                                                                                    "type": 15,
+                                                                                    "ID": "prod-8x6iy85l5fu",
+                                                                                    "enabled": false,
+                                                                                    "print": false,
+                                                                                    "argCount": 0,
+                                                                                    "args": [],
+                                                                                    "selected": false
+                                                                                },
+                                                                                {
                                                                                     "type": 8,
                                                                                     "ID": "prod-ubt4ajkys1o",
                                                                                     "enabled": true,
@@ -3363,9 +3380,9 @@
                                                                                         },
                                                                                         {
                                                                                             "name": "names",
-                                                                                            "value": "'wave'",
+                                                                                            "value": "\"corner\"",
                                                                                             "usedVars": [],
-                                                                                            "jsValue": "'wave'",
+                                                                                            "jsValue": "\"corner\"",
                                                                                             "invalidVar": false,
                                                                                             "linked": false
                                                                                         }
@@ -3714,9 +3731,9 @@
                                                                                         },
                                                                                         {
                                                                                             "name": "name",
-                                                                                            "value": "'panels'",
+                                                                                            "value": "\"panels\"",
                                                                                             "usedVars": [],
-                                                                                            "jsValue": "'panels'",
+                                                                                            "jsValue": "\"panels\"",
                                                                                             "invalidVar": false,
                                                                                             "linked": false
                                                                                         }
@@ -3762,7 +3779,7 @@
                                                                                 {
                                                                                     "type": 8,
                                                                                     "ID": "prod-cga7jovwl89",
-                                                                                    "enabled": false,
+                                                                                    "enabled": true,
                                                                                     "print": false,
                                                                                     "meta": {
                                                                                         "module": "modify",
@@ -3800,6 +3817,15 @@
                                                                                     "selected": false,
                                                                                     "selectGeom": false,
                                                                                     "hasError": false
+                                                                                },
+                                                                                {
+                                                                                    "type": 15,
+                                                                                    "ID": "prod-2pd3u15xxh8",
+                                                                                    "enabled": false,
+                                                                                    "print": false,
+                                                                                    "argCount": 0,
+                                                                                    "args": [],
+                                                                                    "selected": false
                                                                                 }
                                                                             ],
                                                                             "localFunc": [
@@ -4156,7 +4182,7 @@
                                                                                                         },
                                                                                                         "parentNode": {
                                                                                                             "name": "Beams",
-                                                                                                            "id": "node_2yjwjzaywgi",
+                                                                                                            "id": "node_k7bulg4va6i",
                                                                                                             "position": {
                                                                                                                 "x": 5360,
                                                                                                                 "y": 5180
@@ -4254,9 +4280,9 @@
                                                                                                                         },
                                                                                                                         {
                                                                                                                             "name": "names",
-                                                                                                                            "value": "'wave'",
+                                                                                                                            "value": "\"corner\"",
                                                                                                                             "usedVars": [],
-                                                                                                                            "jsValue": "'wave'",
+                                                                                                                            "jsValue": "\"corner\"",
                                                                                                                             "invalidVar": false,
                                                                                                                             "linked": false
                                                                                                                         }
@@ -4544,9 +4570,9 @@
                                                                                                                         },
                                                                                                                         {
                                                                                                                             "name": "name",
-                                                                                                                            "value": "'beams'",
+                                                                                                                            "value": "\"beams\"",
                                                                                                                             "usedVars": [],
-                                                                                                                            "jsValue": "'beams'",
+                                                                                                                            "jsValue": "\"beams\"",
                                                                                                                             "invalidVar": false,
                                                                                                                             "linked": false
                                                                                                                         }
@@ -5444,7 +5470,7 @@
                                                                                                         },
                                                                                                         "parentNode": {
                                                                                                             "name": "Block",
-                                                                                                            "id": "node_eo8escsq35c",
+                                                                                                            "id": "node_31ur6x9rsds",
                                                                                                             "position": {
                                                                                                                 "x": 5040,
                                                                                                                 "y": 5180
@@ -5542,9 +5568,9 @@
                                                                                                                         },
                                                                                                                         {
                                                                                                                             "name": "names",
-                                                                                                                            "value": "'base'",
+                                                                                                                            "value": "\"beveled_pgon\"",
                                                                                                                             "usedVars": [],
-                                                                                                                            "jsValue": "'base'",
+                                                                                                                            "jsValue": "\"beveled_pgon\"",
                                                                                                                             "invalidVar": false,
                                                                                                                             "linked": false
                                                                                                                         }
@@ -5845,9 +5871,9 @@
                                                                                                                         },
                                                                                                                         {
                                                                                                                             "name": "name",
-                                                                                                                            "value": "'block'",
+                                                                                                                            "value": "\"block\"",
                                                                                                                             "usedVars": [],
-                                                                                                                            "jsValue": "'block'",
+                                                                                                                            "jsValue": "\"block\"",
                                                                                                                             "invalidVar": false,
                                                                                                                             "linked": false
                                                                                                                         }
@@ -5984,7 +6010,7 @@
                                                                                             },
                                                                                             "parentNode": {
                                                                                                 "name": "Colors",
-                                                                                                "id": "node_oz103eiy7f",
+                                                                                                "id": "node_tv0s91btvj",
                                                                                                 "position": {
                                                                                                     "x": 5200,
                                                                                                     "y": 5320
@@ -6145,7 +6171,7 @@
                                                                                                         "type": 8,
                                                                                                         "ID": "prod-bjzsa000hga",
                                                                                                         "enabled": true,
-                                                                                                        "print": true,
+                                                                                                        "print": false,
                                                                                                         "meta": {
                                                                                                             "module": "util",
                                                                                                             "name": "EntityInfo"
@@ -6198,7 +6224,7 @@
                                                                                                 "state": {
                                                                                                     "procedure": [],
                                                                                                     "show_code": true,
-                                                                                                    "show_func": true
+                                                                                                    "show_func": false
                                                                                                 },
                                                                                                 "input": "~flowchart~nodes~0~output~edges~0~target~parentNode~output~edges~0~target~parentNode~output~edges~0~target~parentNode~output~edges~0~target",
                                                                                                 "output": {
@@ -6219,7 +6245,7 @@
                                                                                                                 },
                                                                                                                 "parentNode": {
                                                                                                                     "name": "End",
-                                                                                                                    "id": "node_u5dsci6c2vg",
+                                                                                                                    "id": "node_xcj3a8e1vtb",
                                                                                                                     "position": {
                                                                                                                         "x": 5200,
                                                                                                                         "y": 5420
@@ -6463,8 +6489,8 @@
         ],
         "functions": [],
         "ordered": true,
-        "last_updated": "2020-03-06T08:33:49.831Z"
+        "last_updated": "2020-03-06T21:21:01.923Z"
     },
     "version": "0.5.27",
-    "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500,\"pos_x\":0,\"pos_y\":0,\"pos_z\":0,\"pos\":{\"x\":0,\"y\":0,\"z\":0}},\"background\":{\"show\":true,\"background_set\":0},\"positions\":{\"show\":false,\"size\":4.3},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":true},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-26.438901795525688,\"y\":60.944352987999835,\"z\":48.78130301686034},\"pos_x\":-26.438901795525688,\"pos_y\":60.944352987999835,\"pos_z\":48.78130301686034,\"target\":{\"x\":-6.248036179616067,\"y\":7.632680890627881,\"z\":9.587595989326466}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#e0d1d1\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"azimuth\":90,\"altitude\":45,\"distance\":10,\"type\":\"directional\"},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":{\"id\":9,\"name\":\"Collections\"},\"tab\":\"6\"},\"version\":\"0.4.38\"}"
+    "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500,\"pos_x\":0,\"pos_y\":0,\"pos_z\":0,\"pos\":{\"x\":0,\"y\":0,\"z\":0}},\"background\":{\"show\":true,\"background_set\":0},\"positions\":{\"show\":false,\"size\":4.3},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":true},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-26.438901795525688,\"y\":60.944352987999835,\"z\":48.78130301686034},\"pos_x\":-26.438901795525688,\"pos_y\":60.944352987999835,\"pos_z\":48.78130301686034,\"target\":{\"x\":-6.248036179616067,\"y\":7.632680890627881,\"z\":9.587595989326466}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#e0d1d1\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"azimuth\":90,\"altitude\":45,\"distance\":10,\"type\":\"directional\"},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":{\"id\":0,\"name\":\"Positions\"},\"tab\":\"0\"},\"version\":\"0.4.38\"}"
 }
