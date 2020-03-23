@@ -181,6 +181,12 @@ let result_exec_Untitled_node_6xq66acopcy = exec_Untitled_node_6xq66acopcy(__par
 return result_exec_Untitled_node_6xq66acopcy;
 }
 
+function pythonList(x, l){
+    if (x < 0) {
+        return x + l;
+    }
+    return x;
+}
 
 function mergeInputs(models){
     let result = __modules__._model.__new__();
