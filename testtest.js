@@ -1,20 +1,23 @@
 /**
- * to use this code: import Untitled from this js file as well as the GI module
- * run Untitled with the GI module as input along with other start node input
+ * to use this code: import Example_1_using_DivPgons_function from this js file as well as the GI module
+ * run Example_1_using_DivPgons_function with the GI module as input along with other start node input
  * e.g.:
- * const Untitled = require('./Untitled.js').Untitled
+ * const Example_1_using_DivPgons_function = require('./Example_1_using_DivPgons_function.js').Example_1_using_DivPgons_function
  * const module = require('gi-module')
- * const result = Untitled(module, start_input_1, start_input_2, ...);
+ * const result = Example_1_using_DivPgons_function(module, start_input_1, start_input_2, ...);
  *
  * returns: a json object:
  *   _ result.model -> gi model of the flowchart
  *   _ result.result -> returned output of the flowchart, if the flowchart does not return any value, result.result is the model of the flowchart
  */
 
-function Untitled(__modules__) {
+// Parameter: {"name":"segments","value":6,"type":1,"min":"4","max":"12","step":"1"}
+// Parameter: {"name":"slices","value":4,"type":1,"min":"4","max":"12","step":"1"}
+
+
+function Example_1_using_DivPgons_function(__modules__, segments, slices) {
 
 /** * **/
-
 PI = Math.PI;
 XY = __modules__._constants.XY;
 YZ = __modules__._constants.YZ;
@@ -132,28 +135,38 @@ setattr = __modules__._model.__setAttrib__;
 getattr = __modules__._model.__getAttrib__;
 
 
-function exec_Untitled(__params__){
+function exec_Example_1_using_DivPgons_function_DivPgons(__params__, pgons_, num_u_, num_v_){
 
 
 
-function exec_Untitled_node_oa0eurrjeo(__params__){
+function exec_Example_1_using_DivPgons_function_DivPgons_node_pac4eluffj(__params__, pgons_, num_u_, num_v_){
 __modules__._model.__preprocess__( __params__.model);
 
 
-for (let  i_ of range(1, 20)){
+let pgons_list_ = pgons_;
+
+if (!isList(pgons_)){
 
 
-let grid_ = __modules__.pattern.Rectangle( __params__.model, [35, 0, i_ * 5], [50, 10] );
+pgons_list_ = [pgons_];
+}
 
-let pg_ = __modules__.make.Polygon( __params__.model, grid_ );
+for (let  pgon_to_divide_ of pgons_list_){
 
-let edges_ = __modules__.query.Get( __params__.model, '_e', pg_ );
 
-let cn_ = __modules__.calc.Centroid( __params__.model, edges_[pythonList(1, edges_.length)], 'ps_average' );
+let edges_ = __modules__.query.Get( __params__.model, '_e', pgon_to_divide_ );
 
-__modules__.modify.Scale( __params__.model, edges_[pythonList(1, edges_.length)], cn_, 2.9 );
+let pl1_ = __modules__.make.Polyline( __params__.model, edges_[pythonList(0, edges_.length)], 'open' );
 
-__modules__.modify.Rotate( __params__.model, pg_, JSON.parse(JSON.stringify(XY)), (JSON.parse(JSON.stringify(PI)) / 8) * i_ );
+let pl2_ = __modules__.make.Polyline( __params__.model, edges_[pythonList(2, edges_.length)], 'open' );
+
+__modules__.modify.Reverse( __params__.model, pl2_ );
+
+let div1_ = __modules__.make.Divide( __params__.model, [pl1_, pl2_], num_v_, 'by_number' );
+
+__modules__.attrib.Set(__params__.model, null, 'divided_pgons',  __modules__.make.Loft( __params__.model, [pl1_, pl2_], num_u_, 'open_quads' ) );
+
+__modules__.modify.Delete( __params__.model, [pgon_to_divide_, pl1_, pl2_], 'delete_selected' );
 }
 __modules__._model.__postprocess__( __params__.model);
 return __params__.model;
@@ -162,7 +175,65 @@ return __params__.model;
 
 
 
-function exec_Untitled_node_6xq66acopcy(__params__){
+function exec_Example_1_using_DivPgons_function_DivPgons_node_ih4784mnjwo(__params__, pgons_, num_u_, num_v_){
+__modules__._model.__preprocess__( __params__.model);
+
+
+let __return_value__ = __modules__._Output.Return(__params__.model, __modules__.attrib.Get(__params__.model, null, 'divided_pgons'));
+return __return_value__;
+}
+
+var merged;
+let result_exec_Example_1_using_DivPgons_function_DivPgons_node_7uh0a4c9e1u = __params__.model;
+
+__params__.model = mergeInputs([result_exec_Example_1_using_DivPgons_function_DivPgons_node_7uh0a4c9e1u]);
+let result_exec_Example_1_using_DivPgons_function_DivPgons_node_pac4eluffj = exec_Example_1_using_DivPgons_function_DivPgons_node_pac4eluffj(__params__, pgons_, num_u_, num_v_);
+
+__params__.model = mergeInputs([result_exec_Example_1_using_DivPgons_function_DivPgons_node_pac4eluffj]);
+let result_exec_Example_1_using_DivPgons_function_DivPgons_node_ih4784mnjwo = exec_Example_1_using_DivPgons_function_DivPgons_node_ih4784mnjwo(__params__, pgons_, num_u_, num_v_);
+
+return result_exec_Example_1_using_DivPgons_function_DivPgons_node_ih4784mnjwo;
+}
+
+function exec_Example_1_using_DivPgons_function(__params__, segments_, slices_){
+
+
+
+function exec_Example_1_using_DivPgons_function_node_ibvr4fs0p4d(__params__, segments_, slices_){
+__modules__._model.__preprocess__( __params__.model);
+
+
+let cir_ = __modules__.pattern.Arc( __params__.model, JSON.parse(JSON.stringify(YZ)), 20, segments_, null );
+
+__modules__.modify.Move( __params__.model, cir_, [0, 50, 0] );
+
+let cir_pl_ = __modules__.make.Polyline( __params__.model, cir_, 'close' );
+
+let circs_ = [];
+
+let num_ = slices_;
+
+for (let  i_ of range(0, num_)){
+
+
+let cir_pl2_ = __modules__.make.Copy( __params__.model, cir_pl_, [0, 0, 0] );
+
+__modules__.modify.Rotate( __params__.model, cir_pl2_, [0, 0, 1], (2 * JSON.parse(JSON.stringify(PI)) / num_) * -i_ );
+
+__modules__.list.Add( circs_, cir_pl2_, 'to_end' );
+}
+
+let skin_ = __modules__.make.Loft( __params__.model, circs_, 1, 'closed_quads' );
+
+let pgons_div_ = exec_Example_1_using_DivPgons_function_DivPgons(__params__, skin_, 8, 2);
+__modules__._model.__postprocess__( __params__.model);
+return __params__.model;
+}
+
+
+
+
+function exec_Example_1_using_DivPgons_function_node_vu6h2nekica(__params__, segments_, slices_){
 __modules__._model.__preprocess__( __params__.model);
 
 
@@ -170,16 +241,17 @@ return null;
 }
 
 var merged;
-let result_exec_Untitled_node_5q5n058a1l = __params__.model;
+let result_exec_Example_1_using_DivPgons_function_node_83vbo0hi668 = __params__.model;
 
-__params__.model = mergeInputs([result_exec_Untitled_node_5q5n058a1l]);
-let result_exec_Untitled_node_oa0eurrjeo = exec_Untitled_node_oa0eurrjeo(__params__);
+__params__.model = mergeInputs([result_exec_Example_1_using_DivPgons_function_node_83vbo0hi668]);
+let result_exec_Example_1_using_DivPgons_function_node_ibvr4fs0p4d = exec_Example_1_using_DivPgons_function_node_ibvr4fs0p4d(__params__, segments_, slices_);
 
-__params__.model = mergeInputs([result_exec_Untitled_node_oa0eurrjeo]);
-let result_exec_Untitled_node_6xq66acopcy = exec_Untitled_node_6xq66acopcy(__params__);
+__params__.model = mergeInputs([result_exec_Example_1_using_DivPgons_function_node_ibvr4fs0p4d]);
+let result_exec_Example_1_using_DivPgons_function_node_vu6h2nekica = exec_Example_1_using_DivPgons_function_node_vu6h2nekica(__params__, segments_, slices_);
 
-return result_exec_Untitled_node_6xq66acopcy;
+return result_exec_Example_1_using_DivPgons_function_node_vu6h2nekica;
 }
+
 
 function pythonList(x, l){
     if (x < 0) {
@@ -262,12 +334,11 @@ function printFunc(_console, name, value){
 const __params__ = {};
 __params__["model"]= __modules__._model.__new__();
 __params__["modules"]= __modules__;
-const result = exec_Untitled(__params__);
+const result = exec_Example_1_using_DivPgons_function(__params__, segments, slices);
 if (result === __params__.model) { return { "model": __params__.model, "result": null };}
 return {"model": __params__.model, "result": result};
-
 /** * **/
 
 }
 
-module.exports = Untitled;
+module.exports = Example_1_using_DivPgons_function;
