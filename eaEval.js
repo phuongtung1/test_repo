@@ -16,6 +16,7 @@
 function eaEval(__modules__) {
 
 __debug__ = true;
+__model__ = null;
 /** * **/
 PI = Math.PI;
 XY = __modules__._constants.XY;
@@ -791,7 +792,7 @@ function printFunc(_console, name, value){
 const __params__ = {};
 __params__["model"] = __modules__._model.__new__();
 if (__model__) {
-    __params__["model"].setData(__model__);
+    __params__["model"].setData(JSON.parse(__model__));
 }
 __params__["model"].debug = __debug__;
 __params__["modules"] = __modules__;
