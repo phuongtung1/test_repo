@@ -795,6 +795,7 @@ if (__model__) {
 }
 __params__["model"].debug = __debug__;
 __params__["modules"] = __modules__;
+__params__["console"] = [];
 const result = exec_eaEval(__params__);
 if (result === __params__.model) { return { "model": __params__.model, "result": null };}
 return {"model": __params__.model, "result": result};
