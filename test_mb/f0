@@ -1,5 +1,5 @@
 {
-    "name": "w4_s6_u3_assign_step2_ans",
+    "name": "Tower Options",
     "author": "new_user",
     "flowchart": {
         "id": "3ba39313-f7b0-0024-462c-99898bf9fd1c",
@@ -14,7 +14,7 @@
         "nodes": [
             {
                 "name": "Start",
-                "id": "node_b7u4nl5z3qd",
+                "id": "node_dycyjsfaf0k",
                 "position": {
                     "x": 5340,
                     "y": 5000
@@ -59,7 +59,7 @@
                             },
                             {
                                 "name": "__input__",
-                                "value": 50,
+                                "value": 25,
                                 "min": "0",
                                 "max": "50",
                                 "step": "1",
@@ -91,7 +91,7 @@
                             },
                             {
                                 "name": "__input__",
-                                "value": 5,
+                                "value": 3,
                                 "step": "1",
                                 "min": "1",
                                 "max": "5",
@@ -152,7 +152,7 @@
                                 },
                                 "parentNode": {
                                     "name": "Node",
-                                    "id": "node_2xctumalnmo",
+                                    "id": "node_7nseo0h0t74",
                                     "position": {
                                         "x": 5340,
                                         "y": 5200
@@ -189,131 +189,51 @@
                                                 }
                                             ],
                                             "selected": false,
-                                            "selectGeom": false,
-                                            "hasError": false
+                                            "selectGeom": false
                                         },
                                         {
-                                            "type": 4,
-                                            "ID": "prod-c9oz0jciion",
+                                            "type": 18,
+                                            "ID": "prod-7tse3283qpa",
                                             "enabled": true,
                                             "print": false,
-                                            "argCount": 2,
+                                            "argCount": 4,
+                                            "meta": {
+                                                "module": "localFunc",
+                                                "name": "tower"
+                                            },
                                             "args": [
                                                 {
-                                                    "name": "item",
-                                                    "value": "i",
-                                                    "linked": false,
-                                                    "invalidVar": false,
-                                                    "jsValue": "i_"
+                                                    "name": "__none__",
+                                                    "linked": false
                                                 },
                                                 {
-                                                    "name": "list",
-                                                    "value": "range(0, 5)",
+                                                    "name": "origin",
+                                                    "value": "[0, 0, 0]",
+                                                    "jsValue": "[0, 0, 0]",
                                                     "usedVars": [],
                                                     "linked": false,
-                                                    "jsValue": "range(0, 5)",
+                                                    "invalidVar": false
+                                                },
+                                                {
+                                                    "name": "width",
+                                                    "value": "15",
+                                                    "jsValue": "15",
+                                                    "usedVars": [],
+                                                    "linked": false,
+                                                    "invalidVar": false
+                                                },
+                                                {
+                                                    "name": "rotation",
+                                                    "value": "3",
+                                                    "jsValue": "3",
+                                                    "usedVars": [],
+                                                    "linked": false,
                                                     "invalidVar": false
                                                 }
                                             ],
-                                            "children": [
-                                                {
-                                                    "type": 13,
-                                                    "ID": "",
-                                                    "parent": "~flowchart~nodes~0~output~edges~0~target~parentNode~procedure~2",
-                                                    "meta": {
-                                                        "name": "",
-                                                        "module": ""
-                                                    },
-                                                    "argCount": 0,
-                                                    "args": [],
-                                                    "print": false,
-                                                    "enabled": true,
-                                                    "selected": false,
-                                                    "selectGeom": false,
-                                                    "hasError": false
-                                                },
-                                                {
-                                                    "type": 0,
-                                                    "parent": "~flowchart~nodes~0~output~edges~0~target~parentNode~procedure~2",
-                                                    "ID": "prod-i5wa55uyhse",
-                                                    "enabled": true,
-                                                    "print": false,
-                                                    "argCount": 2,
-                                                    "args": [
-                                                        {
-                                                            "name": "var_name",
-                                                            "value": "x",
-                                                            "invalidVar": false,
-                                                            "jsValue": "x_",
-                                                            "linked": false
-                                                        },
-                                                        {
-                                                            "name": "value",
-                                                            "value": "i * 100",
-                                                            "usedVars": [
-                                                                "i"
-                                                            ],
-                                                            "linked": false,
-                                                            "jsValue": "i_ * 100",
-                                                            "invalidVar": false
-                                                        }
-                                                    ],
-                                                    "selected": false,
-                                                    "variable": "x",
-                                                    "hasError": false
-                                                },
-                                                {
-                                                    "type": 18,
-                                                    "ID": "prod-a7uo1fmt88",
-                                                    "enabled": true,
-                                                    "print": false,
-                                                    "argCount": 4,
-                                                    "meta": {
-                                                        "module": "localFunc",
-                                                        "name": "tower"
-                                                    },
-                                                    "args": [
-                                                        {
-                                                            "name": "__none__",
-                                                            "linked": false
-                                                        },
-                                                        {
-                                                            "name": "origin",
-                                                            "value": "[x, 0, 0]",
-                                                            "jsValue": "[x_, 0, 0]",
-                                                            "usedVars": [
-                                                                "x"
-                                                            ],
-                                                            "linked": false,
-                                                            "invalidVar": false
-                                                        },
-                                                        {
-                                                            "name": "width",
-                                                            "value": "15",
-                                                            "jsValue": "15",
-                                                            "usedVars": [],
-                                                            "linked": false,
-                                                            "invalidVar": false
-                                                        },
-                                                        {
-                                                            "name": "rotation",
-                                                            "value": "i",
-                                                            "jsValue": "i_",
-                                                            "usedVars": [
-                                                                "i"
-                                                            ],
-                                                            "linked": false,
-                                                            "invalidVar": false
-                                                        }
-                                                    ],
-                                                    "selected": false,
-                                                    "hasError": false,
-                                                    "selectGeom": false,
-                                                    "parent": "~flowchart~nodes~0~output~edges~0~target~parentNode~procedure~2"
-                                                }
-                                            ],
-                                            "variable": "i",
-                                            "hasError": false
+                                            "selected": false,
+                                            "hasError": false,
+                                            "selectGeom": false
                                         },
                                         {
                                             "type": 14,
@@ -1014,7 +934,7 @@
                                                     },
                                                     "parentNode": {
                                                         "name": "End",
-                                                        "id": "node_aj2tx9j25fm",
+                                                        "id": "node_hul2x3yqz79",
                                                         "position": {
                                                             "x": 5340,
                                                             "y": 5400
@@ -1135,8 +1055,8 @@
         ],
         "functions": [],
         "ordered": true,
-        "last_updated": "2020-02-04T08:20:53.228Z"
+        "last_updated": "2020-01-09T11:19:32.397Z"
     },
-    "version": "0.5.12",
+    "version": "0.5.13",
     "settings": "{\"normals\":{\"show\":false,\"size\":5},\"axes\":{\"show\":true,\"size\":50},\"grid\":{\"show\":true,\"size\":500,\"pos_x\":0,\"pos_y\":0,\"pos_z\":0,\"pos\":{\"x\":0,\"y\":0,\"z\":0}},\"background\":{\"show\":true,\"background_set\":0},\"positions\":{\"show\":true,\"size\":2},\"tjs_summary\":{\"show\":false},\"gi_summary\":{\"show\":true},\"wireframe\":{\"show\":false},\"camera\":{\"pos\":{\"x\":-86.68157051779934,\"y\":-38.02450896889638,\"z\":96.36459764271459},\"pos_x\":-86.68157051779934,\"pos_y\":-38.02450896889638,\"pos_z\":96.36459764271459,\"target\":{\"x\":0,\"y\":0,\"z\":37.5}},\"colors\":{\"viewer_bg\":\"#E6E6E6\",\"position\":\"#000000\",\"position_s\":\"#0033FF\",\"vertex_s\":\"#FFCC00\",\"face_f\":\"#FFFFFF\",\"face_f_s\":\"#4949BD\",\"face_b\":\"#DDDDDD\",\"face_b_s\":\"#00006D\"},\"ambient_light\":{\"show\":true,\"color\":\"#FFFFFF\",\"intensity\":0.5},\"hemisphere_light\":{\"show\":true,\"helper\":false,\"skyColor\":\"#FFFFFF\",\"groundColor\":\"#FFFFFF\",\"intensity\":0.5},\"directional_light\":{\"show\":false,\"helper\":false,\"color\":\"#FFFFFF\",\"intensity\":1,\"shadow\":true,\"azimuth\":90,\"altitude\":45,\"distance\":10,\"type\":\"directional\"},\"ground\":{\"show\":false,\"width\":1000,\"length\":1000,\"height\":-0.5,\"color\":\"#FFFFFF\",\"shininess\":0},\"select\":{\"selector\":{\"id\":8,\"name\":\"Polygons\"},\"tab\":0},\"version\":\"0.4.38\"}"
 }
