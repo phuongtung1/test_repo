@@ -16,7 +16,9 @@
 // Parameter: {"name":"height_ratio","value":0.42,"type":1,"min":"0","max":"1","step":"0.01"}
 
 
-function eaGen(__modules__, rotate1, rotate2, height_ratio) {
+function eaGen() {
+
+async function __main_func__(__modules__, rotate1, rotate2, height_ratio) {
 
 __debug__ = true;
 __model__ = null;
@@ -427,6 +429,8 @@ __params__["modules"] = __modules__;
 const result = exec_eaGen(__params__, rotate1, rotate2, height_ratio);
 if (result === __params__.model) { return { "model": __params__.model, "result": null };}
 return {"model": __params__.model, "result": result};
+}
+return __main_func__;
 /** * **/
 
 }
