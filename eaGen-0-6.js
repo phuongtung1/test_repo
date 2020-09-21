@@ -4,7 +4,7 @@
  * e.g.:
  * const eaGen = require('./eaGen.js').eaGen
  * const module = require('gi-module')
- * const result = eaGen(module, start_input_1, start_input_2, ...);
+ * const result = await eaGen(module, start_input_1, start_input_2, ...);
  *
  * returns: a json object:
  *   _ result.model -> gi model of the flowchart
@@ -16,9 +16,7 @@
 // Parameter: {"name":"height_ratio","value":0.42,"type":1,"min":"0","max":"1","step":"0.01"}
 
 
-function eaGen() {
-
-async function __main_func__(__modules__, rotate1, rotate2, height_ratio) {
+async function eaGen(__modules__, rotate1, rotate2, height_ratio) {
 
 __debug__ = true;
 __model__ = null;
@@ -426,11 +424,9 @@ __params__["model"].setModelDataJSONStr(__model__)
 __params__["model"].debug = __debug__;
 __params__["console"] = [];
 __params__["modules"] = __modules__;
-const result = exec_eaGen(__params__, rotate1, rotate2, height_ratio);
+const result = await exec_eaGen(__params__, rotate1, rotate2, height_ratio);
 if (result === __params__.model) { return { "model": __params__.model, "result": null };}
 return {"model": __params__.model, "result": result};
-}
-return __main_func__;
 /** * **/
 
 }
