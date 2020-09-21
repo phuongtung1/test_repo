@@ -4,7 +4,7 @@
  * e.g.:
  * const eaEval = require('./eaEval.js').eaEval
  * const module = require('gi-module')
- * const result = eaEval(module, start_input_1, start_input_2, ...);
+ * const result = await eaEval(module, start_input_1, start_input_2, ...);
  *
  * returns: a json object:
  *   _ result.model -> gi model of the flowchart
@@ -13,7 +13,7 @@
 
 
 
-function eaEval(__modules__) {
+async function eaEval(__modules__) {
 
 __debug__ = true;
 __model__ = null;
@@ -173,7 +173,7 @@ getattr = __modules__._model.__getAttrib__;
 
 async function exec_eaEval(__params__){
 
-async function exec_eaEval_node_dlwwl31kuhb(__params__){
+async function exec_eaEval_node_oklzq4h7zt(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -194,7 +194,7 @@ return __params__.model;
 }
 
 
-async function exec_eaEval_node_sik7bfu4xil(__params__){
+async function exec_eaEval_node_m6vw9idn11(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -224,7 +224,7 @@ return __params__.model;
 }
 
 
-async function exec_eaEval_node_ea0mps51it(__params__){
+async function exec_eaEval_node_418143vhdae(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -237,7 +237,7 @@ return __params__.model;
 }
 
 
-async function exec_eaEval_node_a0w13quovu5(__params__){
+async function exec_eaEval_node_n0ac5p0y4a(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -248,7 +248,7 @@ return __params__.model;
 }
 
 
-async function exec_eaEval_node_hq6ewypcpe6(__params__){
+async function exec_eaEval_node_1jedx5w2bkr(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -262,7 +262,7 @@ return __params__.model;
 
 
 
-async function exec_eaEval_node_tfojjqi20n_sigmoid_(__params__, values_, minmax_) {
+async function exec_eaEval_node_jabhbwvlc6_sigmoid_(__params__, values_, minmax_) {
 
 let new_values_ = [];
 
@@ -278,7 +278,7 @@ __modules__.list.Add( new_values_, e_pow_ / (e_pow_ + 1), 'to_end' );
 return new_values_;
 }
 
-async function exec_eaEval_node_tfojjqi20n(__params__){
+async function exec_eaEval_node_jabhbwvlc6(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -346,7 +346,7 @@ __modules__.modify.Move( __params__.model, __modules__.query.Get(__params__.mode
 
 let noise_list_ = __modules__.attrib.Get(__params__.model, facade_pgons_, 'noise');
 
-let noise_score_values_ = await exec_eaEval_node_tfojjqi20n_sigmoid_(__params__, noise_list_, [0, 0.02]);
+let noise_score_values_ = await exec_eaEval_node_jabhbwvlc6_sigmoid_(__params__, noise_list_, [0, 0.02]);
 if (__params__.terminated) { return __params__.model;}
 
 __modules__.attrib.Set(__params__.model, coll_buildings_, 'score',  mean(noise_score_values_) );
@@ -363,7 +363,7 @@ return __params__.model;
 
 
 
-async function exec_eaEval_node_cgyyo19t4pl_sigmoid_(__params__, values_, minmax_) {
+async function exec_eaEval_node_5m0ofaquocr_sigmoid_(__params__, values_, minmax_) {
 
 let new_values_ = [];
 
@@ -379,7 +379,7 @@ __modules__.list.Add( new_values_, e_pow_ / (e_pow_ + 1), 'to_end' );
 return new_values_;
 }
 
-async function exec_eaEval_node_cgyyo19t4pl(__params__){
+async function exec_eaEval_node_5m0ofaquocr(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -409,7 +409,7 @@ __modules__.modify.Move( __params__.model, __modules__.query.Get(__params__.mode
 
 let sun_exposure_list_ = __modules__.attrib.Get(__params__.model, facade_pgons_, 'sun_exposure');
 
-let sun_exposure_score_values_ = await exec_eaEval_node_cgyyo19t4pl_sigmoid_(__params__, sun_exposure_list_, [0, 0.7]);
+let sun_exposure_score_values_ = await exec_eaEval_node_5m0ofaquocr_sigmoid_(__params__, sun_exposure_list_, [0, 0.7]);
 if (__params__.terminated) { return __params__.model;}
 
 __modules__.attrib.Set(__params__.model, coll_buildings_, 'score',  mean(sun_exposure_score_values_) );
@@ -426,7 +426,7 @@ return __params__.model;
 
 
 
-async function exec_eaEval_node_t2c9x6z9dfc_sigmoid_(__params__, values_, minmax_) {
+async function exec_eaEval_node_5pjuyrivdyy_sigmoid_(__params__, values_, minmax_) {
 
 let new_values_ = [];
 
@@ -442,7 +442,7 @@ __modules__.list.Add( new_values_, e_pow_ / (e_pow_ + 1), 'to_end' );
 return new_values_;
 }
 
-async function exec_eaEval_node_t2c9x6z9dfc(__params__){
+async function exec_eaEval_node_5pjuyrivdyy(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -498,7 +498,7 @@ __modules__.modify.Move( __params__.model, __modules__.query.Get(__params__.mode
 
 let unob_view_list_ = __modules__.attrib.Get(__params__.model, facade_pgons_, 'unob_view');
 
-let unob_view_score_values_ = await exec_eaEval_node_t2c9x6z9dfc_sigmoid_(__params__, unob_view_list_, [1, 0.3]);
+let unob_view_score_values_ = await exec_eaEval_node_5pjuyrivdyy_sigmoid_(__params__, unob_view_list_, [1, 0.3]);
 if (__params__.terminated) { return __params__.model;}
 
 __modules__.attrib.Set(__params__.model, coll_buildings_, 'score',  mean(unob_view_score_values_) );
@@ -515,7 +515,7 @@ return __params__.model;
 
 
 
-async function exec_eaEval_node_0466tdlqw9j_sigmoid_(__params__, values_, minmax_) {
+async function exec_eaEval_node_irwuwqmgk1o_sigmoid_(__params__, values_, minmax_) {
 
 let new_values_ = [];
 
@@ -531,7 +531,7 @@ __modules__.list.Add( new_values_, e_pow_ / (e_pow_ + 1), 'to_end' );
 return new_values_;
 }
 
-async function exec_eaEval_node_0466tdlqw9j(__params__){
+async function exec_eaEval_node_irwuwqmgk1o(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -559,7 +559,7 @@ __modules__.modify.Move( __params__.model, __modules__.query.Get(__params__.mode
 
 let sky_exposure_list_ = __modules__.attrib.Get(__params__.model, facade_pgons_, 'sky_exposure');
 
-let sky_exposure_score_values_ = await exec_eaEval_node_0466tdlqw9j_sigmoid_(__params__, sky_exposure_list_, [0.3, 0.1]);
+let sky_exposure_score_values_ = await exec_eaEval_node_irwuwqmgk1o_sigmoid_(__params__, sky_exposure_list_, [0.3, 0.1]);
 if (__params__.terminated) { return __params__.model;}
 
 __modules__.attrib.Set(__params__.model, coll_buildings_, 'score',  mean(sky_exposure_score_values_) );
@@ -576,7 +576,7 @@ return __params__.model;
 
 
 
-async function exec_eaEval_node_usmkxen27pr_radarChart_(__params__, values_, origin_, radius_) {
+async function exec_eaEval_node_fueor66aqff_radarChart_(__params__, values_, origin_, radius_) {
 
 let posis_ = [];
 
@@ -611,7 +611,7 @@ __modules__.collection.Add( __params__.model, coll_, pline_ );
 return coll_;
 }
 
-async function exec_eaEval_node_usmkxen27pr(__params__){
+async function exec_eaEval_node_fueor66aqff(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -633,7 +633,7 @@ coll_view_ = coll_view_[pythonList(0, coll_view_.length)];
 
 let scores_ = [ __modules__.attrib.Get(__params__.model, coll_noise_, 'score'),  __modules__.attrib.Get(__params__.model, coll_sun_, 'score'),  __modules__.attrib.Get(__params__.model, coll_sky_, 'score'),  __modules__.attrib.Get(__params__.model, coll_view_, 'score')];
 
-let coll_radar_ = await exec_eaEval_node_usmkxen27pr_radarChart_(__params__, scores_, [0, 0, 0], 30);
+let coll_radar_ = await exec_eaEval_node_fueor66aqff_radarChart_(__params__, scores_, [0, 0, 0], 30);
 if (__params__.terminated) { return __params__.model;}
 
 let coll_option_ = __modules__.collection.Create( __params__.model, [coll_noise_, coll_sun_, coll_sky_, coll_view_, coll_radar_], "option" );
@@ -662,7 +662,7 @@ return __params__.model;
 }
 
 
-async function exec_eaEval_node_sf0nzkb222(__params__){
+async function exec_eaEval_node_x5h2rbyf9sf(__params__){
 while (true) {
 __modules__._model.__preprocess__( __params__.model);
 
@@ -678,53 +678,53 @@ break; }
 }
 
 var merged;
-let result_exec_eaEval_node_gvvku690lvq = __params__.model;
+let result_exec_eaEval_node_qzflusoqbar = __params__.model;
 
-__params__.model = duplicateModel(result_exec_eaEval_node_gvvku690lvq);
+__params__.model = duplicateModel(result_exec_eaEval_node_qzflusoqbar);
 
-let result_exec_eaEval_node_dlwwl31kuhb = await exec_eaEval_node_dlwwl31kuhb(__params__);
+let result_exec_eaEval_node_oklzq4h7zt = await exec_eaEval_node_oklzq4h7zt(__params__);
 
-__params__.model = duplicateModel(result_exec_eaEval_node_gvvku690lvq);
+__params__.model = duplicateModel(result_exec_eaEval_node_qzflusoqbar);
 
-let result_exec_eaEval_node_sik7bfu4xil = await exec_eaEval_node_sik7bfu4xil(__params__);
+let result_exec_eaEval_node_m6vw9idn11 = await exec_eaEval_node_m6vw9idn11(__params__);
 
-__params__.model = duplicateModel(result_exec_eaEval_node_gvvku690lvq);
+__params__.model = duplicateModel(result_exec_eaEval_node_qzflusoqbar);
 
-let result_exec_eaEval_node_ea0mps51it = await exec_eaEval_node_ea0mps51it(__params__);
+let result_exec_eaEval_node_418143vhdae = await exec_eaEval_node_418143vhdae(__params__);
 
-__params__.model = mergeInputs([result_exec_eaEval_node_sik7bfu4xil, result_exec_eaEval_node_ea0mps51it]);
+__params__.model = mergeInputs([result_exec_eaEval_node_m6vw9idn11, result_exec_eaEval_node_418143vhdae]);
 
-let result_exec_eaEval_node_a0w13quovu5 = await exec_eaEval_node_a0w13quovu5(__params__);
+let result_exec_eaEval_node_n0ac5p0y4a = await exec_eaEval_node_n0ac5p0y4a(__params__);
 
-__params__.model = result_exec_eaEval_node_gvvku690lvq;
+__params__.model = result_exec_eaEval_node_qzflusoqbar;
 
-let result_exec_eaEval_node_hq6ewypcpe6 = await exec_eaEval_node_hq6ewypcpe6(__params__);
+let result_exec_eaEval_node_1jedx5w2bkr = await exec_eaEval_node_1jedx5w2bkr(__params__);
 
-__params__.model = mergeInputs([result_exec_eaEval_node_dlwwl31kuhb, result_exec_eaEval_node_a0w13quovu5, result_exec_eaEval_node_hq6ewypcpe6]);
+__params__.model = mergeInputs([result_exec_eaEval_node_oklzq4h7zt, result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]);
 
-let result_exec_eaEval_node_tfojjqi20n = await exec_eaEval_node_tfojjqi20n(__params__);
+let result_exec_eaEval_node_jabhbwvlc6 = await exec_eaEval_node_jabhbwvlc6(__params__);
 
-__params__.model = mergeInputs([result_exec_eaEval_node_a0w13quovu5, result_exec_eaEval_node_hq6ewypcpe6]);
+__params__.model = mergeInputs([result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]);
 
-let result_exec_eaEval_node_cgyyo19t4pl = await exec_eaEval_node_cgyyo19t4pl(__params__);
+let result_exec_eaEval_node_5m0ofaquocr = await exec_eaEval_node_5m0ofaquocr(__params__);
 
-__params__.model = mergeInputs([result_exec_eaEval_node_a0w13quovu5, result_exec_eaEval_node_hq6ewypcpe6]);
+__params__.model = mergeInputs([result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]);
 
-let result_exec_eaEval_node_t2c9x6z9dfc = await exec_eaEval_node_t2c9x6z9dfc(__params__);
+let result_exec_eaEval_node_5pjuyrivdyy = await exec_eaEval_node_5pjuyrivdyy(__params__);
 
-__params__.model = mergeInputs([result_exec_eaEval_node_a0w13quovu5, result_exec_eaEval_node_hq6ewypcpe6]);
+__params__.model = mergeInputs([result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]);
 
-let result_exec_eaEval_node_0466tdlqw9j = await exec_eaEval_node_0466tdlqw9j(__params__);
+let result_exec_eaEval_node_irwuwqmgk1o = await exec_eaEval_node_irwuwqmgk1o(__params__);
 
-__params__.model = mergeInputs([result_exec_eaEval_node_tfojjqi20n, result_exec_eaEval_node_cgyyo19t4pl, result_exec_eaEval_node_t2c9x6z9dfc, result_exec_eaEval_node_0466tdlqw9j]);
+__params__.model = mergeInputs([result_exec_eaEval_node_jabhbwvlc6, result_exec_eaEval_node_5m0ofaquocr, result_exec_eaEval_node_5pjuyrivdyy, result_exec_eaEval_node_irwuwqmgk1o]);
 
-let result_exec_eaEval_node_usmkxen27pr = await exec_eaEval_node_usmkxen27pr(__params__);
+let result_exec_eaEval_node_fueor66aqff = await exec_eaEval_node_fueor66aqff(__params__);
 
-__params__.model = result_exec_eaEval_node_usmkxen27pr;
+__params__.model = result_exec_eaEval_node_fueor66aqff;
 
-let result_exec_eaEval_node_sf0nzkb222 = await exec_eaEval_node_sf0nzkb222(__params__);
+let result_exec_eaEval_node_x5h2rbyf9sf = await exec_eaEval_node_x5h2rbyf9sf(__params__);
 
-return result_exec_eaEval_node_sf0nzkb222;
+return result_exec_eaEval_node_x5h2rbyf9sf;
 }
 
 
@@ -831,7 +831,7 @@ __params__["model"].setModelDataJSONStr(__model__)
 __params__["model"].debug = __debug__;
 __params__["console"] = [];
 __params__["modules"] = __modules__;
-const result = exec_eaEval(__params__);
+const result = await exec_eaEval(__params__);
 if (result === __params__.model) { return { "model": __params__.model, "result": null };}
 return {"model": __params__.model, "result": result};
 /** * **/
