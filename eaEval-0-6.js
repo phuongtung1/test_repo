@@ -827,7 +827,7 @@ const __params__ = {};
 __params__["model"] = __modules__._model.__new__();
 __params__["model"].setMetaData(__modules__._model.__newMetaData__());
 if (__model__) {
-__params__["model"].setJSONStr(__model__)
+__params__["model"].setJSONString(__model__)
 }
 __params__["model"].debug = __debug__;
 __params__["console"] = [];
