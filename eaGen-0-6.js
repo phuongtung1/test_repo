@@ -418,9 +418,8 @@ function printFunc(_console, name, value){
 
 const __params__ = {};
 __params__["model"] = __modules__._model.__new__();
-__params__["model"].setMetaData(__modules__._model.__newMetaData__());
 if (__model__) {
-__params__["model"].setModelDataJSONStr(__model__)
+__modules__.io._importGI(__params__["model"], __model__);
 }
 __params__["model"].debug = __debug__;
 __params__["console"] = [];

@@ -692,7 +692,6 @@ __params__.model = duplicateModel(result_exec_eaEval_node_qzflusoqbar);
 
 let result_exec_eaEval_node_418143vhdae = await exec_eaEval_node_418143vhdae(__params__);
 
-console.log('[result_exec_eaEval_node_m6vw9idn11, result_exec_eaEval_node_418143vhdae]');
 __params__.model = mergeInputs([result_exec_eaEval_node_m6vw9idn11, result_exec_eaEval_node_418143vhdae]);
 
 let result_exec_eaEval_node_n0ac5p0y4a = await exec_eaEval_node_n0ac5p0y4a(__params__);
@@ -700,27 +699,22 @@ let result_exec_eaEval_node_n0ac5p0y4a = await exec_eaEval_node_n0ac5p0y4a(__par
 __params__.model = result_exec_eaEval_node_qzflusoqbar;
 
 let result_exec_eaEval_node_1jedx5w2bkr = await exec_eaEval_node_1jedx5w2bkr(__params__);
-console.log('[result_exec_eaEval_node_oklzq4h7zt, result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]');
 
 __params__.model = mergeInputs([result_exec_eaEval_node_oklzq4h7zt, result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]);
 
 let result_exec_eaEval_node_jabhbwvlc6 = await exec_eaEval_node_jabhbwvlc6(__params__);
-console.log('[result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]');
 
 __params__.model = mergeInputs([result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]);
 
 let result_exec_eaEval_node_5m0ofaquocr = await exec_eaEval_node_5m0ofaquocr(__params__);
-console.log('[result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]');
 
 __params__.model = mergeInputs([result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]);
 
 let result_exec_eaEval_node_5pjuyrivdyy = await exec_eaEval_node_5pjuyrivdyy(__params__);
-console.log('[result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]');
 
 __params__.model = mergeInputs([result_exec_eaEval_node_n0ac5p0y4a, result_exec_eaEval_node_1jedx5w2bkr]);
 
 let result_exec_eaEval_node_irwuwqmgk1o = await exec_eaEval_node_irwuwqmgk1o(__params__);
-console.log('[result_exec_eaEval_node_jabhbwvlc6, result_exec_eaEval_node_5m0ofaquocr, result_exec_eaEval_node_5pjuyrivdyy, result_exec_eaEval_node_irwuwqmgk1o]');
 
 __params__.model = mergeInputs([result_exec_eaEval_node_jabhbwvlc6, result_exec_eaEval_node_5m0ofaquocr, result_exec_eaEval_node_5pjuyrivdyy, result_exec_eaEval_node_irwuwqmgk1o]);
 
@@ -831,9 +825,8 @@ function printFunc(_console, name, value){
 
 const __params__ = {};
 __params__["model"] = __modules__._model.__new__();
-__params__["model"].setMetaData(__modules__._model.__newMetaData__());
 if (__model__) {
-__params__["model"].setJSONStr(__model__)
+__modules__.io._importGI(__params__["model"], __model__);
 }
 __params__["model"].debug = __debug__;
 __params__["console"] = [];
