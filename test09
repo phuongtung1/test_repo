@@ -1,0 +1,597 @@
+/**
+ * to use this code: import Floor_area_constraint_example from this js file as well as the GI module
+ * run Floor_area_constraint_example with the GI module as input along with other start node input
+ * e.g.:
+ * const Floor_area_constraint_example = require('./Floor_area_constraint_example.js').Floor_area_constraint_example
+ * const module = require('gi-module')
+ * const result = await Floor_area_constraint_example(module, start_input_1, start_input_2, ...);
+ *
+ * returns: a json object:
+ *   _ result.model -> gi model of the flowchart
+ *   _ result.result -> returned output of the flowchart, if the flowchart does not return any value, result.result is the model of the flowchart
+ */
+
+// Parameter: {"name":"RAND_SEED","value":0.279,"type":1,"min":"0","max":"1","step":"0.001"}
+// Parameter: {"name":"PLOT_RATIO","value":6.2,"type":1,"min":"1","max":"10","step":"0.01"}
+// Parameter: {"name":"MIN_NUM_FLOORS","value":5,"type":1,"min":"0","max":"10","step":"1"}
+// Parameter: {"name":"MAX_NUM_FLOORS","value":11,"type":1,"min":"5","max":"20","step":"1"}
+// Parameter: {"name":"NUM_CONSTRAINTS","value":"\\"three_constraints\\"","type":6}
+
+
+const __modules__ = require('@design-automation/mobius-sim-funcs').Funcs;
+const __inline__ = require('@design-automation/mobius-inline-funcs');
+
+async function Floor_area_constraint_example(RAND_SEED,PLOT_RATIO,MIN_NUM_FLOORS,MAX_NUM_FLOORS,NUM_CONSTRAINTS) {
+
+var __debug__ = true;
+var __model__ = null;
+/** * **/
+var PI = __inline__.constants.PI;
+var XY = __inline__.constants.XY;
+var YZ = __inline__.constants.YZ;
+var ZX = __inline__.constants.ZX;
+var YX = __inline__.constants.YX;
+var ZY = __inline__.constants.ZY;
+var XZ = __inline__.constants.XZ;
+var isNum = __inline__.types.isNum;
+var isInt = __inline__.types.isInt;
+var isFlt = __inline__.types.isFlt;
+var isBool = __inline__.types.isBool;
+var isStr = __inline__.types.isStr;
+var isList = __inline__.types.isList;
+var isDict = __inline__.types.isDict;
+var isVec2 = __inline__.types.isVec2;
+var isVec3 = __inline__.types.isVec3;
+var isCol = __inline__.types.isCol;
+var isRay = __inline__.types.isRay;
+var isPln = __inline__.types.isPln;
+var isNaN = __inline__.types.isNaN;
+var isNull = __inline__.types.isNull;
+var isUndef = __inline__.types.isUndef;
+var strRepl = __inline__.strs.strRepl;
+var strUpp = __inline__.strs.strUpp;
+var strLow = __inline__.strs.strLow;
+var strTrim = __inline__.strs.strTrim;
+var strTrimR = __inline__.strs.strTrimR;
+var strTrimL = __inline__.strs.strTrimL;
+var strSub = __inline__.strs.strSub;
+var strStarts = __inline__.strs.strStarts;
+var strEnds = __inline__.strs.strEnds;
+var strPadL = __inline__.strs.strPadL;
+var strPadR = __inline__.strs.strPadR;
+var isApprox = __inline__.util.isApprox;
+var isIn = __inline__.util.isIn;
+var isWithin = __inline__.util.isWithin;
+var min = __inline__.math.min;
+var max = __inline__.math.max;
+var pow = __inline__.math.pow;
+var sqrt = __inline__.math.sqrt;
+var exp = __inline__.math.exp;
+var log = __inline__.math.log;
+var round = __inline__.math.round;
+var sigFig = __inline__.math.sigFig;
+var ceil = __inline__.math.ceil;
+var floor = __inline__.math.floor;
+var abs = __inline__.math.abs;
+var sin = __inline__.math.sin;
+var asin = __inline__.math.asin;
+var sinh = __inline__.math.sinh;
+var asinh = __inline__.math.asinh;
+var cos = __inline__.math.cos;
+var acos = __inline__.math.acos;
+var cosh = __inline__.math.cosh;
+var acosh = __inline__.math.acosh;
+var tan = __inline__.math.tan;
+var atan = __inline__.math.atan;
+var tanh = __inline__.math.tanh;
+var atanh = __inline__.math.atanh;
+var atan2 = __inline__.math.atan2;
+var boolean = __inline__.mathjs.boolean;
+var number = __inline__.mathjs.number;
+var string = __inline__.mathjs.string;
+var mad = __inline__.mathjs.mad;
+var mean = __inline__.mathjs.mean;
+var median = __inline__.mathjs.median;
+var mode = __inline__.mathjs.mode;
+var prod = __inline__.mathjs.prod;
+var std = __inline__.mathjs.std;
+var vari = __inline__.mathjs.vari;
+var sum = __inline__.mathjs.sum;
+var hypot = __inline__.mathjs.hypot;
+var norm = __inline__.mathjs.norm;
+var square = __inline__.mathjs.square;
+var cube = __inline__.mathjs.cube;
+var remap = __inline__.arithmetic.remap;
+var distance = __inline__.geometry.distance;
+var distanceM = __inline__.geometry.distanceM;
+var distanceMS = __inline__.geometry.distanceMS;
+var intersect = __inline__.geometry.intersect;
+var project = __inline__.geometry.project;
+var range = __inline__.list.range;
+var len = __inline__.common.len;
+var listCount = __inline__.list.listCount;
+var listCopy = __inline__.list.listCopy;
+var listRep = __inline__.list.listRep;
+var listLast = __inline__.list.listLast;
+var listGet = __inline__.list.listGet;
+var listFind = __inline__.list.listFind;
+var listHas = __inline__.list.listHas;
+var listJoin = __inline__.list.listJoin;
+var listFlat = __inline__.list.listFlat;
+var listRot = __inline__.list.listRot;
+var listSlice = __inline__.list.listSlice;
+var listRev = __inline__.list.listRev;
+var listCull = __inline__.list.listCull;
+var listSort = __inline__.list.listSort;
+var listZip = __inline__.list.listZip;
+var listEq = __inline__.list.listEq;
+var dictGet = __inline__.dict.dictGet;
+var dictKeys = __inline__.dict.dictKeys;
+var dictVals = __inline__.dict.dictVals;
+var dictHasKey = __inline__.dict.dictHasKey;
+var dictHasVal = __inline__.dict.dictHasVal;
+var dictFind = __inline__.dict.dictFind;
+var dictCopy = __inline__.dict.dictCopy;
+var dictEq = __inline__.dict.dictEq;
+var setMake = __inline__.set.setMake;
+var setUni = __inline__.set.setUni;
+var setInt = __inline__.set.setInt;
+var setDif = __inline__.set.setDif;
+var vecAdd = __inline__.vec.vecAdd;
+var vecSub = __inline__.vec.vecSub;
+var vecDiv = __inline__.vec.vecDiv;
+var vecMult = __inline__.vec.vecMult;
+var vecSum = __inline__.vec.vecSum;
+var vecLen = __inline__.vec.vecLen;
+var vecSetLen = __inline__.vec.vecSetLen;
+var vecNorm = __inline__.vec.vecNorm;
+var vecRev = __inline__.vec.vecRev;
+var vecFromTo = __inline__.vec.vecFromTo;
+var vecAng = __inline__.vec.vecAng;
+var vecAng2 = __inline__.vec.vecAng2;
+var vecDot = __inline__.vec.vecDot;
+var vecCross = __inline__.vec.vecCross;
+var vecEqual = __inline__.vec.vecEqual;
+var vecLtoG = __inline__.vec.vecLtoG;
+var vecGtoL = __inline__.vec.vecGtoL;
+var plnMake = __inline__.plane.plnMake;
+var plnCopy = __inline__.plane.plnCopy;
+var plnMove = __inline__.plane.plnMove;
+var plnRot = __inline__.plane.plnRot;
+var plnLMove = __inline__.plane.plnLMove;
+var plnLRotX = __inline__.plane.plnLRotX;
+var plnLRotY = __inline__.plane.plnLRotY;
+var plnLRotZ = __inline__.plane.plnLRotZ;
+var rayMake = __inline__.ray.rayMake;
+var rayCopy = __inline__.ray.rayCopy;
+var rayMove = __inline__.ray.rayMove;
+var rayRot = __inline__.ray.rayRot;
+var rayLMove = __inline__.ray.rayLMove;
+var rayFromPln = __inline__.ray.rayFromPln;
+var rayLtoG = __inline__.ray.rayLtoG;
+var rayGtoL = __inline__.ray.rayGtoL;
+var colFalse = __inline__.colors.colFalse;
+var colScale = __inline__.colors.colScale;
+var radToDeg = __inline__.conversion.radToDeg;
+var degToRad = __inline__.conversion.degToRad;
+var numToStr = __inline__.conversion.numToStr;
+var rand = __inline__.rand.rand;
+var randInt = __inline__.rand.randInt;
+var randPick = __inline__.rand.randPick;
+
+async function exec_Floor_area_constraint_example(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+
+async function exec_Floor_area_constraint_example_node_u43xwptk1q8(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (__debug__) { printFunc(__params__.console, 'Executing: Skeleton', '__null__') }
+
+
+let r1_ = __modules__.pattern.Rectangle( __params__.model, JSON.parse(JSON.stringify(XY)), 123 );
+
+__modules__.modify.Move( __params__.model, r1_[pythonList(0, r1_.length)], [-100, 0, 0] );
+
+let base_pgon_ = __modules__.make.Polygon( __params__.model, r1_ );
+}
+
+
+async function exec_Floor_area_constraint_example_node_bhtazbjmgal(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (__debug__) { printFunc(__params__.console, 'Executing: Plan', '__null__') }
+
+
+let base_pgon_ = __modules__.query.Get(__params__.model, 'pg', null);
+
+let temp_pgon_ = __modules__.poly2d.OffsetChamfer( __params__.model, base_pgon_, -20, 'square_end' );
+
+let cham_ = __modules__.poly2d.OffsetChamfer( __params__.model, temp_pgon_, 20, 'square_end' );
+
+let offset_pgon_ = __modules__.poly2d.OffsetChamfer( __params__.model, base_pgon_, -30, 'square_end' );
+
+let div_ = __modules__.edit.Divide( __params__.model, offset_pgon_, 20, 'by_max_length' );
+
+let voronoi_cells_ = __modules__.poly2d.Voronoi( __params__.model, base_pgon_, offset_pgon_ );
+
+let middle_pgon_ = __modules__.poly2d.OffsetChamfer( __params__.model, base_pgon_, -30, 'square_end' );
+
+let footprints_ = __modules__.poly2d.Boolean( __params__.model, voronoi_cells_, middle_pgon_, 'difference' );
+
+footprints_ = __modules__.poly2d.Boolean( __params__.model, footprints_, cham_, 'intersect' );
+
+__modules__.edit.Delete( __params__.model, footprints_, 'keep_selected' );
+
+__modules__.modify.Move( __params__.model, footprints_, [0, 0, 0.1] );
+
+for (let  footprint_ of footprints_){
+
+let pgon_area_ = __modules__.calc.Area( __params__.model, footprint_ );
+
+__modules__.attrib.Set(__params__.model, footprint_, `area`,  round(__debug__, pgon_area_, 3) );
+}
+
+__modules__.attrib.Set(__params__.model, null, `total_footprint_area`,  sum(__debug__,  __modules__.attrib.Get(__params__.model, footprints_, 'area')) );
+}
+
+
+async function exec_Floor_area_constraint_example_node_kte8fehyh5(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (__debug__) { printFunc(__params__.console, 'Executing: Calculate Relative Area', '__null__') }
+
+
+let plots_ = __modules__.query.Get(__params__.model, 'pg', null);
+
+let rand_seed2_ = RAND_SEED_;
+
+for (let  plot_ of plots_){
+
+rand_seed2_ = rand_seed2_ + 1;
+
+__modules__.attrib.Set(__params__.model, plot_, `rel_height`,  round(__debug__, rand(__debug__, 0, 1, rand_seed2_ + 0.1234), 3) );
+
+__modules__.attrib.Set(__params__.model, plot_, `rel_area`,  round(__debug__,  __modules__.attrib.Get(__params__.model, plot_, 'rel_height')*  __modules__.attrib.Get(__params__.model, plot_, 'area'), 3) );
+}
+}
+
+
+
+async function exec_Floor_area_constraint_example_node_guqd0m82rm_oneConstraint_(__params__, footprints_) {
+
+let target_floor_area_ = PLOT_RATIO_ *  __modules__.attrib.Get(__params__.model, null, 'total_footprint_area');
+
+let rel_area_total_ = sum(__debug__,  __modules__.attrib.Get(__params__.model, footprints_, 'rel_area'));
+
+for (let  footprint_ of footprints_){
+
+__modules__.attrib.Set(__params__.model, footprint_, `percent_area`,  round(__debug__, ( __modules__.attrib.Get(__params__.model, footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
+
+let bldg_floor_area_ = __modules__.attrib.Get(__params__.model, footprint_, 'percent_area')* target_floor_area_ / 100;
+
+__modules__.attrib.Set(__params__.model, footprint_, `num_floors`,  floor(__debug__, bldg_floor_area_ /  __modules__.attrib.Get(__params__.model, footprint_, 'area')) );
+}
+}
+
+
+async function exec_Floor_area_constraint_example_node_guqd0m82rm_twoConstraints_(__params__, footprints_) {
+
+let target_floor_area_ = PLOT_RATIO_ *  __modules__.attrib.Get(__params__.model, null, 'total_footprint_area');
+
+let base_area_ = __modules__.attrib.Get(__params__.model, null, 'area_total')* MIN_NUM_FLOORS_;
+
+let upper_area_ = target_floor_area_ - base_area_;
+
+if (upper_area_ < 0){
+
+upper_area_ = 0;
+}
+
+let rel_area_total_ = sum(__debug__,  __modules__.attrib.Get(__params__.model, footprints_, 'rel_area'));
+
+for (let  footprint_ of footprints_){
+
+__modules__.attrib.Set(__params__.model, footprint_, `percent_area`,  round(__debug__, ( __modules__.attrib.Get(__params__.model, footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
+
+let bldg_floor_area_ = ( __modules__.attrib.Get(__params__.model, footprint_, 'percent_area')/ 100) * upper_area_;
+
+__modules__.attrib.Set(__params__.model, footprint_, `num_floors`,  MIN_NUM_FLOORS_ + floor(__debug__, bldg_floor_area_ /  __modules__.attrib.Get(__params__.model, footprint_, 'area')) );
+}
+}
+
+
+async function exec_Floor_area_constraint_example_node_guqd0m82rm_threeConstraints_(__params__, footprints_) {
+
+let target_floor_area_ = PLOT_RATIO_ *  __modules__.attrib.Get(__params__.model, null, 'total_footprint_area');
+
+let base_area_ = __modules__.attrib.Get(__params__.model, null, 'total_footprint_area')* MIN_NUM_FLOORS_;
+
+let upper_area_ = target_floor_area_ - base_area_;
+
+if (upper_area_ < 0){
+
+upper_area_ = 0;
+}
+
+footprints_ = __modules__.query.Sort( __params__.model, footprints_, "rel_height", 'descending' );
+
+let max_floors_satisfied_ = false;
+
+let increment_ = 0.1;
+
+while (!max_floors_satisfied_){
+
+max_floors_satisfied_ = true;
+
+let rel_area_total_ = sum(__debug__,  __modules__.attrib.Get(__params__.model, footprints_, 'rel_area'));
+
+for (let  footprint_ of footprints_){
+
+__modules__.attrib.Set(__params__.model, footprint_, `percent_area`,  round(__debug__, ( __modules__.attrib.Get(__params__.model, footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
+
+let variable_floor_area_ = ( __modules__.attrib.Get(__params__.model, footprint_, 'percent_area')/ 100) * upper_area_;
+
+__modules__.attrib.Set(__params__.model, footprint_, `num_floors`,  MIN_NUM_FLOORS_ + floor(__debug__, variable_floor_area_ /  __modules__.attrib.Get(__params__.model, footprint_, 'area')) );
+
+if (__modules__.attrib.Get(__params__.model, footprint_, 'num_floors')> MAX_NUM_FLOORS_){
+
+max_floors_satisfied_ = false;
+
+break;
+}
+}
+
+for (let  footprint_ of footprints_){
+
+__modules__.attrib.Set(__params__.model, footprint_, `rel_height`,  round(__debug__,  __modules__.attrib.Get(__params__.model, footprint_, 'rel_height')+ increment_, 3) );
+
+__modules__.attrib.Set(__params__.model, footprint_, `rel_area`,  round(__debug__,  __modules__.attrib.Get(__params__.model, footprint_, 'rel_height')*  __modules__.attrib.Get(__params__.model, footprint_, 'area'), 3) );
+}
+}
+}
+
+async function exec_Floor_area_constraint_example_node_guqd0m82rm(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (__debug__) { printFunc(__params__.console, 'Executing: Calc Number of Floors', '__null__') }
+
+
+let target_floor_area_ = PLOT_RATIO_ *  __modules__.attrib.Get(__params__.model, null, 'total_footprint_area');
+
+let footprints_ = __modules__.query.Get(__params__.model, 'pg', null);
+
+let rel_area_total_ = sum(__debug__,  __modules__.attrib.Get(__params__.model, footprints_, 'rel_area'));
+
+if (NUM_CONSTRAINTS_ == 'one_constraint'){
+
+await exec_Floor_area_constraint_example_node_guqd0m82rm_oneConstraint_(__params__, footprints_);
+if (__params__.terminated) { return __params__.model;}
+}
+
+else {
+if(NUM_CONSTRAINTS_ == 'two_constraint'){
+
+await exec_Floor_area_constraint_example_node_guqd0m82rm_twoConstraints_(__params__, footprints_);
+if (__params__.terminated) { return __params__.model;}
+}
+
+else {
+
+await exec_Floor_area_constraint_example_node_guqd0m82rm_threeConstraints_(__params__, footprints_);
+if (__params__.terminated) { return __params__.model;}
+}
+}
+
+let coll_ = __modules__.collection.Create( __params__.model, footprints_, "footprints" );
+}
+
+
+async function exec_Floor_area_constraint_example_node_9k44iz9eize(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (__debug__) { printFunc(__params__.console, 'Executing: Extrude', '__null__') }
+
+
+let coll_ = __modules__.collection.Get( __params__.model, "footprints" );
+
+let footprints_ = __modules__.query.Get(__params__.model, 'pg', coll_);
+
+for (let  footprint_ of footprints_){
+
+__modules__.attrib.Set(__params__.model, footprint_, `actual_floor_area`,  __modules__.attrib.Get(__params__.model, footprint_, 'area')*  __modules__.attrib.Get(__params__.model, footprint_, 'num_floors') );
+
+let extruded_pgons_ = __modules__.make.Extrude( __params__.model, footprint_, __modules__.attrib.Get(__params__.model, footprint_, 'num_floors')* 3, __modules__.attrib.Get(__params__.model, footprint_, 'num_floors'), 'quads' );
+
+if (isList(__debug__, extruded_pgons_)){
+
+let roof_ = __modules__.make.Extrude( __params__.model, extruded_pgons_[pythonList(-1, extruded_pgons_.length)], 1, 1, 'quads' );
+
+__modules__.visualize.Color( __params__.model, extruded_pgons_, [0.9, 0.9, 1] );
+
+__modules__.visualize.Color( __params__.model, roof_, [0.9, 1, 0.9] );
+}
+}
+}
+
+
+async function exec_Floor_area_constraint_example_node_ilhny8pj4me(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (__debug__) { printFunc(__params__.console, 'Executing: HUD', '__null__') }
+
+
+let coll_ = __modules__.collection.Get( __params__.model, "footprints" );
+
+let pgons_ = __modules__.query.Get(__params__.model, 'pg', coll_);
+
+let required_ = __modules__.attrib.Get(__params__.model, null, 'total_footprint_area')* PLOT_RATIO_;
+
+let actual_ = sum(__debug__,  __modules__.attrib.Get(__params__.model, pgons_, 'actual_floor_area'));
+
+let line1_ = "Required floor area: " + numToStr(__debug__, round(__debug__, required_)) + " m2";
+
+let line2_ = "Actual floor area: " + numToStr(__debug__, round(__debug__, actual_)) + " m2";
+
+let line3_ = "Difference: " + sigFig(__debug__, ((actual_ - required_) / required_) * 100, 2) + " %";
+
+__modules__.attrib.Set(__params__.model, null, `hud`,  line1_ + "\n" + line2_ + "\n" + line3_ );
+}
+
+
+async function exec_Floor_area_constraint_example_node_wwvalcc9im(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (__debug__) { printFunc(__params__.console, 'Executing: Base', '__null__') }
+
+
+let base_pgon_ = __modules__.query.Get(__params__.model, 'pg', null);
+
+let base_ = __modules__.poly2d.OffsetRound( __params__.model, base_pgon_, 8, 0.1, 'square_end' );
+
+__modules__.visualize.Color( __params__.model, base_, [0.9, 0.8, 0.9] );
+
+__modules__.edit.Delete( __params__.model, base_, 'keep_selected' );
+}
+
+
+async function exec_Floor_area_constraint_example_node_owpz4ydqyyq(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (__debug__) { printFunc(__params__.console, 'Executing: End', '__null__') }
+
+
+return null;
+}
+
+var merged;
+let ssid_exec_Floor_area_constraint_example_node_zbhfuete2q9 = __params__.model.getActiveSnapshot();
+
+let ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8 = ssid_exec_Floor_area_constraint_example_node_zbhfuete2q9;
+
+await exec_Floor_area_constraint_example_node_u43xwptk1q8(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_bhtazbjmgal = __params__.model.nextSnapshot([ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8]);
+
+await exec_Floor_area_constraint_example_node_bhtazbjmgal(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_kte8fehyh5 = ssid_exec_Floor_area_constraint_example_node_bhtazbjmgal;
+
+await exec_Floor_area_constraint_example_node_kte8fehyh5(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_guqd0m82rm = ssid_exec_Floor_area_constraint_example_node_kte8fehyh5;
+
+await exec_Floor_area_constraint_example_node_guqd0m82rm(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_9k44iz9eize = ssid_exec_Floor_area_constraint_example_node_guqd0m82rm;
+
+await exec_Floor_area_constraint_example_node_9k44iz9eize(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_ilhny8pj4me = ssid_exec_Floor_area_constraint_example_node_9k44iz9eize;
+
+await exec_Floor_area_constraint_example_node_ilhny8pj4me(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_wwvalcc9im = __params__.model.nextSnapshot([ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8]);
+
+await exec_Floor_area_constraint_example_node_wwvalcc9im(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_owpz4ydqyyq = __params__.model.nextSnapshot([ssid_exec_Floor_area_constraint_example_node_ilhny8pj4me, ssid_exec_Floor_area_constraint_example_node_wwvalcc9im]);
+
+return await exec_Floor_area_constraint_example_node_owpz4ydqyyq(__params__, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+}
+
+
+function pythonList(x, l){
+    if (x < 0) {
+        return x + l;
+    }
+    return x;
+}
+
+function mergeInputs(models){
+    let result = null;
+    if (models.length === 0) {
+        result = __modules__._model.__new__();
+    } else if (models.length === 1) {
+        result = models[0].clone();
+    } else {
+        result = models[0].clone();
+        for (let i = 1; i < models.length; i++) {
+            __modules__._model.__merge__(result, models[i]);
+        }
+    }
+    try {
+        result.debug = __debug__;
+    } catch (ex) {}
+    return result;
+}
+function duplicateModel(model){
+    const result = model.clone();
+    try {
+        result.debug = __debug__;
+    } catch (ex) {}
+    return result;
+}
+
+function printFunc(_console, name, value){
+    let val;
+    let padding_style = 'padding: 2px 0px 2px 10px;';
+    if (!value) {
+        val = value;
+    } else if (value === '__null__') {
+        _console.push('<p style="' + padding_style + '"><b><i>_ ' + name + '</i></b></p>');
+        return value;
+    } else if (typeof value === 'number' || value === undefined) {
+        val = value;
+    } else if (typeof value === 'string') {
+        val = '"' + value.replace(/\n/g, '<br>') + '"';
+    } else if (value.constructor === [].constructor) {
+        let __list_check__ = false;
+        let __value_strings__ = [];
+        for (const __item__ of value) {
+            if (!__item__) {
+                __value_strings__.push('' + __item__);
+                continue;
+            }
+            if (__item__.constructor === [].constructor || __item__.constructor === {}.constructor) {
+                __list_check__ = true;
+            }
+            __value_strings__.push(JSON.stringify(__item__).replace(/,/g, ', '));
+        }
+        if (__list_check__) {
+            padding_style = 'padding: 2px 0px 0px 10px;';
+            val = '[<p style="padding: 0px 0px 2px 40px;">' +
+                  __value_strings__.join(',</p><p style="padding: 0px 0px 2px 40px;">') +
+                  '</p><p style="padding: 0px 0px 2px 30px;">]</p>';
+        } else {
+            val = '[' + __value_strings__.join(', ') + ']';
+        }
+    } else if (value.constructor === {}.constructor) {
+        let __list_check__ = false;
+        let __value_strings__ = [];
+        for (const __item__ in value) {
+            const __value__ = value[__item__];
+            if (!__value__) {
+                __value_strings__.push('\<b>"' + __item__ + '\"</b>' + ': ' + __value__);
+                continue;
+            }
+            if (__value__.constructor === [].constructor || __value__.constructor === {}.constructor) {
+                __list_check__ = true;
+            }
+            __value_strings__.push('\<b>"' + __item__ + '\"</b>' + ': ' + JSON.stringify(__value__).replace(/,/g, ', '));
+        }
+        if (__list_check__) {
+            padding_style = 'padding: 2px 0px 0px 10px;';
+            val = '{<p style="padding: 0px 0px 2px 40px;">' +
+                  __value_strings__.join(',</p><p style="padding: 0px 0px 2px 40px;">') +
+                  '</p><p style="padding: 0px 0px 2px 30px;">}</p>';
+        } else {
+            val = '{' + __value_strings__.join(', ') + '}';
+        }
+    } else {
+        val = value;
+    }
+    _console.push('<p style="' + padding_style + '"><b><i>_ ' + name+'</i></b>  = ' + val + '</p>');
+    return val;
+}
+
+
+const __params__ = {};
+__params__["model"] = __modules__._model.__new__();
+if (__model__) {
+__modules__.io._importGI(__params__["model"], __model__);
+}
+__params__["model"].debug = __debug__;
+__params__["console"] = [];
+__params__["modules"] = __modules__;
+__params__["curr_ss"] = {};
+const result = await exec_Floor_area_constraint_example(__params__, RAND_SEED, PLOT_RATIO, MIN_NUM_FLOORS, MAX_NUM_FLOORS, NUM_CONSTRAINTS);
+if (result === __params__.model) { return { "model": __params__.model, "result": null };}
+return {"model": __params__.model, "result": result};
+/** * **/
+
+}
+
+module.exports = Floor_area_constraint_example;
