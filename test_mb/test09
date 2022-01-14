@@ -1,0 +1,419 @@
+/**
+ * to use this code: import Floor_area_constraint_example from this js file as well as the GI module
+ * run Floor_area_constraint_example with the GI module as input along with other start node input
+ * e.g.:
+ * const Floor_area_constraint_example = require('./Floor_area_constraint_example.js').Floor_area_constraint_example
+ * const module = require('gi-module')
+ * const result = await Floor_area_constraint_example(module, start_input_1, start_input_2, ...);
+ *
+ * returns: a json object:
+ *   _ result.model -> gi model of the flowchart
+ *   _ result.result -> returned output of the flowchart, if the flowchart does not return any value, result.result is the model of the flowchart
+ */
+
+// Parameter: {"name":"RAND_SEED","value":0.279,"type":1,"min":"0","max":"1","step":"0.001"}
+// Parameter: {"name":"PLOT_RATIO","value":6.2,"type":1,"min":"1","max":"10","step":"0.01"}
+// Parameter: {"name":"MIN_NUM_FLOORS","value":5,"type":1,"min":"0","max":"10","step":"1"}
+// Parameter: {"name":"MAX_NUM_FLOORS","value":11,"type":1,"min":"5","max":"20","step":"1"}
+// Parameter: {"name":"NUM_CONSTRAINTS","value":"\"three_constraints\"","type":6}
+
+
+const mfn = require('@design-automation/mobius-sim-funcs').Funcs();
+const ifn = require('@design-automation/mobius-inline-funcs').InlineClass(true);
+
+async function Floor_area_constraint_example(RAND_SEED,PLOT_RATIO,MIN_NUM_FLOORS,MAX_NUM_FLOORS,NUM_CONSTRAINTS) {
+
+var __model__ = null;
+
+/** * **/
+
+async function exec_Floor_area_constraint_example($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+
+async function exec_Floor_area_constraint_example_node_u43xwptk1q8($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Skeleton', '__null__') }
+
+
+let r1_ = mfn.pattern.Rectangle( JSON.parse(JSON.stringify(ifn.constants.XY)), 123 );
+
+mfn.modify.Move( r1_[pythonList(0, r1_.length)], [-100, 0, 0] );
+
+let base_pgon_ = mfn.make.Polygon( r1_ );
+}
+
+
+async function exec_Floor_area_constraint_example_node_bhtazbjmgal($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Plan', '__null__') }
+
+
+let base_pgon_ = mfn.query.Get('pg', null);
+
+let temp_pgon_ = mfn.poly2d.OffsetChamfer( base_pgon_, -20, 'square_end' );
+
+let cham_ = mfn.poly2d.OffsetChamfer( temp_pgon_, 20, 'square_end' );
+
+let offset_pgon_ = mfn.poly2d.OffsetChamfer( base_pgon_, -30, 'square_end' );
+
+let div_ = mfn.edit.Divide( offset_pgon_, 20, 'by_max_length' );
+
+let voronoi_cells_ = mfn.poly2d.Voronoi( base_pgon_, offset_pgon_ );
+
+let middle_pgon_ = mfn.poly2d.OffsetChamfer( base_pgon_, -30, 'square_end' );
+
+let footprints_ = mfn.poly2d.Boolean( voronoi_cells_, middle_pgon_, 'difference' );
+
+footprints_ = mfn.poly2d.Boolean( footprints_, cham_, 'intersect' );
+
+mfn.edit.Delete( footprints_, 'keep_selected' );
+
+mfn.modify.Move( footprints_, [0, 0, 0.1] );
+
+for (let  footprint_ of footprints_){
+
+let pgon_area_ = mfn.calc.Area( footprint_ );
+
+mfn.attrib.Set(footprint_, `area`,  ifn.math.round(pgon_area_, 3) );
+}
+
+mfn.attrib.Set(null, `total_footprint_area`,  ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'area')) );
+}
+
+
+async function exec_Floor_area_constraint_example_node_kte8fehyh5($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Calculate Relative Area', '__null__') }
+
+
+let plots_ = mfn.query.Get('pg', null);
+
+let rand_seed2_ = RAND_SEED_;
+
+for (let  plot_ of plots_){
+
+rand_seed2_ = rand_seed2_ + 1;
+
+mfn.attrib.Set(plot_, `rel_height`,  ifn.math.round(ifn.rand.rand(0, 1, rand_seed2_ + 0.1234), 3) );
+
+mfn.attrib.Set(plot_, `rel_area`,  ifn.math.round( mfn.attrib.Get(plot_, 'rel_height')*  mfn.attrib.Get(plot_, 'area'), 3) );
+}
+}
+
+
+
+async function exec_Floor_area_constraint_example_node_guqd0m82rm_oneConstraint_($p, footprints_) {
+
+let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
+
+let rel_area_total_ = ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'rel_area'));
+
+for (let  footprint_ of footprints_){
+
+mfn.attrib.Set(footprint_, `percent_area`,  ifn.math.round(( mfn.attrib.Get(footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
+
+let bldg_floor_area_ = mfn.attrib.Get(footprint_, 'percent_area')* target_floor_area_ / 100;
+
+mfn.attrib.Set(footprint_, `num_floors`,  ifn.math.floor(bldg_floor_area_ /  mfn.attrib.Get(footprint_, 'area')) );
+}
+}
+
+
+async function exec_Floor_area_constraint_example_node_guqd0m82rm_twoConstraints_($p, footprints_) {
+
+let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
+
+let base_area_ = mfn.attrib.Get(null, 'area_total')* MIN_NUM_FLOORS_;
+
+let upper_area_ = target_floor_area_ - base_area_;
+
+if (upper_area_ < 0){
+
+upper_area_ = 0;
+}
+
+let rel_area_total_ = ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'rel_area'));
+
+for (let  footprint_ of footprints_){
+
+mfn.attrib.Set(footprint_, `percent_area`,  ifn.math.round(( mfn.attrib.Get(footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
+
+let bldg_floor_area_ = ( mfn.attrib.Get(footprint_, 'percent_area')/ 100) * upper_area_;
+
+mfn.attrib.Set(footprint_, `num_floors`,  MIN_NUM_FLOORS_ + ifn.math.floor(bldg_floor_area_ /  mfn.attrib.Get(footprint_, 'area')) );
+}
+}
+
+
+async function exec_Floor_area_constraint_example_node_guqd0m82rm_threeConstraints_($p, footprints_) {
+
+let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
+
+let base_area_ = mfn.attrib.Get(null, 'total_footprint_area')* MIN_NUM_FLOORS_;
+
+let upper_area_ = target_floor_area_ - base_area_;
+
+if (upper_area_ < 0){
+
+upper_area_ = 0;
+}
+
+footprints_ = mfn.query.Sort( footprints_, "rel_height", 'descending' );
+
+let max_floors_satisfied_ = false;
+
+let increment_ = 0.1;
+
+while (!max_floors_satisfied_){
+
+max_floors_satisfied_ = true;
+
+let rel_area_total_ = ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'rel_area'));
+
+for (let  footprint_ of footprints_){
+
+mfn.attrib.Set(footprint_, `percent_area`,  ifn.math.round(( mfn.attrib.Get(footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
+
+let variable_floor_area_ = ( mfn.attrib.Get(footprint_, 'percent_area')/ 100) * upper_area_;
+
+mfn.attrib.Set(footprint_, `num_floors`,  MIN_NUM_FLOORS_ + ifn.math.floor(variable_floor_area_ /  mfn.attrib.Get(footprint_, 'area')) );
+
+if (mfn.attrib.Get(footprint_, 'num_floors')> MAX_NUM_FLOORS_){
+
+max_floors_satisfied_ = false;
+
+break;
+}
+}
+
+for (let  footprint_ of footprints_){
+
+mfn.attrib.Set(footprint_, `rel_height`,  ifn.math.round( mfn.attrib.Get(footprint_, 'rel_height')+ increment_, 3) );
+
+mfn.attrib.Set(footprint_, `rel_area`,  ifn.math.round( mfn.attrib.Get(footprint_, 'rel_height')*  mfn.attrib.Get(footprint_, 'area'), 3) );
+}
+}
+}
+
+async function exec_Floor_area_constraint_example_node_guqd0m82rm($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Calc Number of Floors', '__null__') }
+
+
+let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
+
+let footprints_ = mfn.query.Get('pg', null);
+
+let rel_area_total_ = ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'rel_area'));
+
+if (NUM_CONSTRAINTS_ == 'one_constraint'){
+
+await exec_Floor_area_constraint_example_node_guqd0m82rm_oneConstraint_($p, footprints_);
+if ($p.terminated) { return mfn._getModel();}
+}
+
+else {
+if(NUM_CONSTRAINTS_ == 'two_constraint'){
+
+await exec_Floor_area_constraint_example_node_guqd0m82rm_twoConstraints_($p, footprints_);
+if ($p.terminated) { return mfn._getModel();}
+}
+
+else {
+
+await exec_Floor_area_constraint_example_node_guqd0m82rm_threeConstraints_($p, footprints_);
+if ($p.terminated) { return mfn._getModel();}
+}
+}
+
+let coll_ = mfn.collection.Create( footprints_, "footprints" );
+}
+
+
+async function exec_Floor_area_constraint_example_node_9k44iz9eize($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Extrude', '__null__') }
+
+
+let coll_ = mfn.collection.Get( "footprints" );
+
+let footprints_ = mfn.query.Get('pg', coll_);
+
+for (let  footprint_ of footprints_){
+
+mfn.attrib.Set(footprint_, `actual_floor_area`,  mfn.attrib.Get(footprint_, 'area')*  mfn.attrib.Get(footprint_, 'num_floors') );
+
+let extruded_pgons_ = mfn.make.Extrude( footprint_, mfn.attrib.Get(footprint_, 'num_floors')* 3, mfn.attrib.Get(footprint_, 'num_floors'), 'quads' );
+
+if (ifn.types.isList(extruded_pgons_)){
+
+let roof_ = mfn.make.Extrude( extruded_pgons_[pythonList(-1, extruded_pgons_.length)], 1, 1, 'quads' );
+
+mfn.visualize.Color( extruded_pgons_, [0.9, 0.9, 1] );
+
+mfn.visualize.Color( roof_, [0.9, 1, 0.9] );
+}
+}
+}
+
+
+async function exec_Floor_area_constraint_example_node_ilhny8pj4me($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: HUD', '__null__') }
+
+
+let coll_ = mfn.collection.Get( "footprints" );
+
+let pgons_ = mfn.query.Get('pg', coll_);
+
+let required_ = mfn.attrib.Get(null, 'total_footprint_area')* PLOT_RATIO_;
+
+let actual_ = ifn.mathjs.sum( mfn.attrib.Get(pgons_, 'actual_floor_area'));
+
+let line1_ = "Required floor area: " + ifn.conversion.numToStr(ifn.math.round(required_)) + " m2";
+
+let line2_ = "Actual floor area: " + ifn.conversion.numToStr(ifn.math.round(actual_)) + " m2";
+
+let line3_ = "Difference: " + ifn.math.sigFig(((actual_ - required_) / required_) * 100, 2) + " %";
+
+mfn.attrib.Set(null, `hud`,  line1_ + "\n" + line2_ + "\n" + line3_ );
+}
+
+
+async function exec_Floor_area_constraint_example_node_wwvalcc9im($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Base', '__null__') }
+
+
+let base_pgon_ = mfn.query.Get('pg', null);
+
+let base_ = mfn.poly2d.OffsetRound( base_pgon_, 8, 0.1, 'square_end' );
+
+mfn.visualize.Color( base_, [0.9, 0.8, 0.9] );
+
+mfn.edit.Delete( base_, 'keep_selected' );
+}
+
+
+async function exec_Floor_area_constraint_example_node_owpz4ydqyyq($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: End', '__null__') }
+
+
+return null;
+}
+
+var merged;
+let ssid_exec_Floor_area_constraint_example_node_zbhfuete2q9 = mfn._getModel().getActiveSnapshot();
+
+let ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8 = ssid_exec_Floor_area_constraint_example_node_zbhfuete2q9;
+
+await exec_Floor_area_constraint_example_node_u43xwptk1q8($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_bhtazbjmgal = mfn._getModel().nextSnapshot([ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8]);
+
+await exec_Floor_area_constraint_example_node_bhtazbjmgal($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_kte8fehyh5 = ssid_exec_Floor_area_constraint_example_node_bhtazbjmgal;
+
+await exec_Floor_area_constraint_example_node_kte8fehyh5($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_guqd0m82rm = ssid_exec_Floor_area_constraint_example_node_kte8fehyh5;
+
+await exec_Floor_area_constraint_example_node_guqd0m82rm($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_9k44iz9eize = ssid_exec_Floor_area_constraint_example_node_guqd0m82rm;
+
+await exec_Floor_area_constraint_example_node_9k44iz9eize($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_ilhny8pj4me = ssid_exec_Floor_area_constraint_example_node_9k44iz9eize;
+
+await exec_Floor_area_constraint_example_node_ilhny8pj4me($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_wwvalcc9im = mfn._getModel().nextSnapshot([ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8]);
+
+await exec_Floor_area_constraint_example_node_wwvalcc9im($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+
+let ssid_exec_Floor_area_constraint_example_node_owpz4ydqyyq = mfn._getModel().nextSnapshot([ssid_exec_Floor_area_constraint_example_node_ilhny8pj4me, ssid_exec_Floor_area_constraint_example_node_wwvalcc9im]);
+
+return await exec_Floor_area_constraint_example_node_owpz4ydqyyq($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+}
+
+
+function pythonList(x, l){
+    if (x < 0) {
+        return x + l;
+    }
+    return x;
+}
+
+function printFunc(_console, name, value){
+    let val;
+    let padding_style = 'padding: 2px 0px 2px 10px;';
+    if (!value) {
+        val = value;
+    } else if (value === '__null__') {
+        _console.push('<p style="' + padding_style + '"><b><i>_ ' + name + '</i></b></p>');
+        return value;
+    } else if (typeof value === 'number' || value === undefined) {
+        val = value;
+    } else if (typeof value === 'string') {
+        val = '"' + value.replace(/\n/g, '<br>') + '"';
+    } else if (value.constructor === [].constructor) {
+        let __list_check__ = false;
+        let __value_strings__ = [];
+        for (const __item__ of value) {
+            if (!__item__) {
+                __value_strings__.push('' + __item__);
+                continue;
+            }
+            if (__item__.constructor === [].constructor || __item__.constructor === {}.constructor) {
+                __list_check__ = true;
+            }
+            __value_strings__.push(JSON.stringify(__item__).replace(/,/g, ', '));
+        }
+        if (__list_check__) {
+            padding_style = 'padding: 2px 0px 0px 10px;';
+            val = '[<p style="padding: 0px 0px 2px 40px;">' +
+                  __value_strings__.join(',</p><p style="padding: 0px 0px 2px 40px;">') +
+                  '</p><p style="padding: 0px 0px 2px 30px;">]</p>';
+        } else {
+            val = '[' + __value_strings__.join(', ') + ']';
+        }
+    } else if (value.constructor === {}.constructor) {
+        let __list_check__ = false;
+        let __value_strings__ = [];
+        for (const __item__ in value) {
+            const __value__ = value[__item__];
+            if (!__value__) {
+                __value_strings__.push('\<b>"' + __item__ + '\"</b>' + ': ' + __value__);
+                continue;
+            }
+            if (__value__.constructor === [].constructor || __value__.constructor === {}.constructor) {
+                __list_check__ = true;
+            }
+            __value_strings__.push('\<b>"' + __item__ + '\"</b>' + ': ' + JSON.stringify(__value__).replace(/,/g, ', '));
+        }
+        if (__list_check__) {
+            padding_style = 'padding: 2px 0px 0px 10px;';
+            val = '{<p style="padding: 0px 0px 2px 40px;">' +
+                  __value_strings__.join(',</p><p style="padding: 0px 0px 2px 40px;">') +
+                  '</p><p style="padding: 0px 0px 2px 30px;">}</p>';
+        } else {
+            val = '{' + __value_strings__.join(', ') + '}';
+        }
+    } else {
+        val = value;
+    }
+    _console.push('<p style="' + padding_style + '"><b><i>_ ' + name+'</i></b>  = ' + val + '</p>');
+    return val;
+}
+
+
+const $p = {};
+if (__model__) {
+mfn.io._importGI(__model__);
+}
+mfn._getModel().debug = true;
+$p["console"] = [];
+$p["modules"] = mfn;
+$p["curr_ss"] = {};
+const result = await exec_Floor_area_constraint_example($p, RAND_SEED, PLOT_RATIO, MIN_NUM_FLOORS, MAX_NUM_FLOORS, NUM_CONSTRAINTS);
+if (result === mfn._getModel()) { return { "model": mfn._getModel(), "result": null };}
+return {"model": mfn._getModel(), "result": result};
+/** * **/
+
+}
+
+module.exports = Floor_area_constraint_example;
