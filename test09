@@ -1,293 +1,201 @@
 /**
- * to use this code: import Floor_area_constraint_example from this js file as well as the GI module
- * run Floor_area_constraint_example with the GI module as input along with other start node input
+ * to use this code: import Form_Finding_Solver from this js file as well as the GI module
+ * run Form_Finding_Solver with the GI module as input along with other start node input
  * e.g.:
- * const Floor_area_constraint_example = require('./Floor_area_constraint_example.js').Floor_area_constraint_example
+ * const Form_Finding_Solver = require('./Form_Finding_Solver.js').Form_Finding_Solver
  * const module = require('gi-module')
- * const result = await Floor_area_constraint_example(module, start_input_1, start_input_2, ...);
+ * const result = await Form_Finding_Solver(module, start_input_1, start_input_2, ...);
  *
  * returns: a json object:
  *   _ result.model -> gi model of the flowchart
  *   _ result.result -> returned output of the flowchart, if the flowchart does not return any value, result.result is the model of the flowchart
  */
 
-// Parameter: {"name":"RAND_SEED","value":0.279,"type":1,"min":"0","max":"1","step":"0.001"}
-// Parameter: {"name":"PLOT_RATIO","value":6.2,"type":1,"min":"1","max":"10","step":"0.01"}
-// Parameter: {"name":"MIN_NUM_FLOORS","value":5,"type":1,"min":"0","max":"10","step":"1"}
-// Parameter: {"name":"MAX_NUM_FLOORS","value":11,"type":1,"min":"5","max":"20","step":"1"}
-// Parameter: {"name":"NUM_CONSTRAINTS","value":"\"three_constraints\"","type":6}
+// Parameter: {"name":"REST_LENGTH","value":"5","type":1,"min":"0","max":"20","step":"0.1"}
+// Parameter: {"name":"STIFFNESS","value":0.2,"type":1,"min":"0","max":"0.3","step":"0.01"}
+// Parameter: {"name":"UP_FORCE","value":"0.4","type":1,"min":"0","max":"1","step":"0.01"}
+// Parameter: {"name":"NUM_ITERATIONS","value":"140","type":1,"min":"1","max":"500","step":"1"}
+// Parameter: {"name":"NET_TYPE","value":"'round'","type":6}
 
 
 const mfn = require('@design-automation/mobius-sim-funcs').Funcs();
 const ifn = require('@design-automation/mobius-inline-funcs').InlineClass(true);
 
-async function Floor_area_constraint_example(RAND_SEED,PLOT_RATIO,MIN_NUM_FLOORS,MAX_NUM_FLOORS,NUM_CONSTRAINTS) {
+async function Form_Finding_Solver(REST_LENGTH,STIFFNESS,UP_FORCE,NUM_ITERATIONS,NET_TYPE) {
 
 var __model__ = null;
 
 /** * **/
 
-async function exec_Floor_area_constraint_example($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+async function exec_Form_Finding_Solver($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_){
 
-async function exec_Floor_area_constraint_example_node_u43xwptk1q8($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Skeleton', '__null__') }
+async function exec_Form_Finding_Solver_node_lxmqng2eusm($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Make square net', '__null__') }
 
 
-let r1_ = mfn.pattern.Rectangle( JSON.parse(JSON.stringify(ifn.constants.XY)), 123 );
+let size_ = 15;
 
-mfn.modify.Move( r1_[pythonList(0, r1_.length)], [-100, 0, 0] );
+let g_ = mfn.pattern.Grid( JSON.parse(JSON.stringify(ifn.constants.XY)), 123, size_, 'quads' );
 
-let base_pgon_ = mfn.make.Polygon( r1_ );
+let pgons_ = mfn.make.Polygon( g_ );
+
+let posis_ = mfn.query.Get('ps', null);
+
+for (let  i_ of ifn.list.range(ifn.common.len(posis_))){
+
+mfn.attrib.Set(posis_[pythonList(i_, posis_.length)], `i`,  i_ );
+}
+
+let fixed_ = [0, size_ - 1, size_ * (size_ - 1), (size_ * size_) - 1];
+
+for (let  i_ of fixed_){
+
+mfn.attrib.Set(posis_[pythonList(i_, posis_.length)], `fixed`,  true );
+}
+
+let coll_ = mfn.collection.Create( mfn.query.Get('pg', null), "square" );
 }
 
 
-async function exec_Floor_area_constraint_example_node_bhtazbjmgal($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Plan', '__null__') }
+async function exec_Form_Finding_Solver_node_ew77mtf8tor($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Make round net', '__null__') }
 
 
-let base_pgon_ = mfn.query.Get('pg', null);
+let posis1_ = mfn.pattern.Arc( JSON.parse(JSON.stringify(ifn.constants.XY)), 20, 7, null );
 
-let temp_pgon_ = mfn.poly2d.OffsetChamfer( base_pgon_, -20, 'square_end' );
+let cen_ = mfn.make.Position( [0, 0, 0] );
 
-let cham_ = mfn.poly2d.OffsetChamfer( temp_pgon_, 20, 'square_end' );
+let cables_ = [];
 
-let offset_pgon_ = mfn.poly2d.OffsetChamfer( base_pgon_, -30, 'square_end' );
+for (let  posi_ of posis1_){
 
-let div_ = mfn.edit.Divide( offset_pgon_, 20, 'by_max_length' );
+let cable_ = mfn.make.Polyline( [cen_, posi_], 'open' );
 
-let voronoi_cells_ = mfn.poly2d.Voronoi( base_pgon_, offset_pgon_ );
-
-let middle_pgon_ = mfn.poly2d.OffsetChamfer( base_pgon_, -30, 'square_end' );
-
-let footprints_ = mfn.poly2d.Boolean( voronoi_cells_, middle_pgon_, 'difference' );
-
-footprints_ = mfn.poly2d.Boolean( footprints_, cham_, 'intersect' );
-
-mfn.edit.Delete( footprints_, 'keep_selected' );
-
-mfn.modify.Move( footprints_, [0, 0, 0.1] );
-
-for (let  footprint_ of footprints_){
-
-let pgon_area_ = mfn.calc.Area( footprint_ );
-
-mfn.attrib.Set(footprint_, `area`,  ifn.math.round(pgon_area_, 3) );
+mfn.list.Add( cables_, cable_, 'to_end' );
 }
 
-mfn.attrib.Set(null, `total_footprint_area`,  ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'area')) );
-}
+let posis2_ = mfn.pattern.Arc( JSON.parse(JSON.stringify(ifn.constants.XY)), 123, 7, null );
 
+let pl1_ = mfn.make.Polyline( posis1_, 'close' );
 
-async function exec_Floor_area_constraint_example_node_kte8fehyh5($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Calculate Relative Area', '__null__') }
+let pl2_ = mfn.make.Polyline( posis2_, 'close' );
 
+mfn.attrib.Set(posis2_, `fixed`,  true );
 
-let plots_ = mfn.query.Get('pg', null);
+let d_ = mfn.edit.Divide( [pl1_, pl2_], 8, 'by_number' );
 
-let rand_seed2_ = RAND_SEED_;
+let skin_ = mfn.make.Loft( [pl2_, pl1_], 8, 'open_quads' );
 
-for (let  plot_ of plots_){
+mfn.edit.Delete( [pl1_, pl2_], 'delete_selected' );
 
-rand_seed2_ = rand_seed2_ + 1;
-
-mfn.attrib.Set(plot_, `rel_height`,  ifn.math.round(ifn.rand.rand(0, 1, rand_seed2_ + 0.1234), 3) );
-
-mfn.attrib.Set(plot_, `rel_area`,  ifn.math.round( mfn.attrib.Get(plot_, 'rel_height')*  mfn.attrib.Get(plot_, 'area'), 3) );
-}
+let coll_ = mfn.collection.Create( [skin_, cables_], "round" );
 }
 
 
+async function exec_Form_Finding_Solver_node_pyfyrdzpcyk($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Switch', '__null__') }
 
-async function exec_Floor_area_constraint_example_node_guqd0m82rm_oneConstraint_($p, footprints_) {
 
-let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
+let coll_ = mfn.collection.Get( NET_TYPE_ );
 
-let rel_area_total_ = ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'rel_area'));
-
-for (let  footprint_ of footprints_){
-
-mfn.attrib.Set(footprint_, `percent_area`,  ifn.math.round(( mfn.attrib.Get(footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
-
-let bldg_floor_area_ = mfn.attrib.Get(footprint_, 'percent_area')* target_floor_area_ / 100;
-
-mfn.attrib.Set(footprint_, `num_floors`,  ifn.math.floor(bldg_floor_area_ /  mfn.attrib.Get(footprint_, 'area')) );
-}
+mfn.edit.Delete( coll_, 'keep_selected' );
 }
 
 
-async function exec_Floor_area_constraint_example_node_guqd0m82rm_twoConstraints_($p, footprints_) {
+async function exec_Form_Finding_Solver_node_b69pxl4mk4v($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Run solver', '__null__') }
 
-let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
 
-let base_area_ = mfn.attrib.Get(null, 'area_total')* MIN_NUM_FLOORS_;
+let pgons_ = mfn.query.Get('pg', null);
 
-let upper_area_ = target_floor_area_ - base_area_;
+let posi_xyz_ = [];
 
-if (upper_area_ < 0){
+let posis_ = mfn.query.Get('ps', null);
 
-upper_area_ = 0;
+let fixed_ = [];
+
+for (let  i_ of ifn.list.range(ifn.common.len(posis_))){
+
+if (mfn.attrib.Get(posis_[pythonList(i_, posis_.length)], 'fixed')){
+
+mfn.list.Add( fixed_, i_, 'to_end' );
 }
 
-let rel_area_total_ = ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'rel_area'));
+if (posi_xyz_[pythonList(i_, posi_xyz_.length)] == null){
 
-for (let  footprint_ of footprints_){
+posi_xyz_[pythonList(i_, posi_xyz_.length)] = mfn.attrib.Get(posis_[pythonList(i_, posis_.length)], 'xyz');
 
-mfn.attrib.Set(footprint_, `percent_area`,  ifn.math.round(( mfn.attrib.Get(footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
-
-let bldg_floor_area_ = ( mfn.attrib.Get(footprint_, 'percent_area')/ 100) * upper_area_;
-
-mfn.attrib.Set(footprint_, `num_floors`,  MIN_NUM_FLOORS_ + ifn.math.floor(bldg_floor_area_ /  mfn.attrib.Get(footprint_, 'area')) );
-}
-}
-
-
-async function exec_Floor_area_constraint_example_node_guqd0m82rm_threeConstraints_($p, footprints_) {
-
-let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
-
-let base_area_ = mfn.attrib.Get(null, 'total_footprint_area')* MIN_NUM_FLOORS_;
-
-let upper_area_ = target_floor_area_ - base_area_;
-
-if (upper_area_ < 0){
-
-upper_area_ = 0;
-}
-
-footprints_ = mfn.query.Sort( footprints_, "rel_height", 'descending' );
-
-let max_floors_satisfied_ = false;
-
-let increment_ = 0.1;
-
-while (!max_floors_satisfied_){
-
-max_floors_satisfied_ = true;
-
-let rel_area_total_ = ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'rel_area'));
-
-for (let  footprint_ of footprints_){
-
-mfn.attrib.Set(footprint_, `percent_area`,  ifn.math.round(( mfn.attrib.Get(footprint_, 'rel_area')/ rel_area_total_) * 100, 1) );
-
-let variable_floor_area_ = ( mfn.attrib.Get(footprint_, 'percent_area')/ 100) * upper_area_;
-
-mfn.attrib.Set(footprint_, `num_floors`,  MIN_NUM_FLOORS_ + ifn.math.floor(variable_floor_area_ /  mfn.attrib.Get(footprint_, 'area')) );
-
-if (mfn.attrib.Get(footprint_, 'num_floors')> MAX_NUM_FLOORS_){
-
-max_floors_satisfied_ = false;
-
-break;
+mfn.attrib.Set(posis_[pythonList(i_, posis_.length)], `i`,  i_ );
 }
 }
 
-for (let  footprint_ of footprints_){
+let posi_n_ = [];
 
-mfn.attrib.Set(footprint_, `rel_height`,  ifn.math.round( mfn.attrib.Get(footprint_, 'rel_height')+ increment_, 3) );
+for (let  pi_ of ifn.list.range(ifn.common.len(posis_))){
 
-mfn.attrib.Set(footprint_, `rel_area`,  ifn.math.round( mfn.attrib.Get(footprint_, 'rel_height')*  mfn.attrib.Get(footprint_, 'area'), 3) );
-}
-}
+posi_n_[pythonList(pi_, posi_n_.length)] = ifn.set.setDif( mfn.attrib.Get( mfn.query.Get('ps',  mfn.query.Get('_e',  mfn.query.Get('_v', posis_[pythonList(pi_, posis_.length)]))), 'i'), [pi_]);
 }
 
-async function exec_Floor_area_constraint_example_node_guqd0m82rm($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Calc Number of Floors', '__null__') }
+for (let  iter_ of ifn.list.range(NUM_ITERATIONS_)){
 
+let posi_xyz_tmp_ = [];
 
-let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
+for (let  pi_ of ifn.list.range(ifn.common.len(posis_))){
 
-let footprints_ = mfn.query.Get('pg', null);
+if (ifn.list.listHas(fixed_, pi_)){
 
-let rel_area_total_ = ifn.mathjs.sum( mfn.attrib.Get(footprints_, 'rel_area'));
+posi_xyz_tmp_[pythonList(pi_, posi_xyz_tmp_.length)] = posi_xyz_[pythonList(pi_, posi_xyz_.length)];
 
-if (NUM_CONSTRAINTS_ == 'one_constraint'){
-
-await exec_Floor_area_constraint_example_node_guqd0m82rm_oneConstraint_($p, footprints_);
-if ($p.terminated) { return mfn._getModel();}
+continue;
 }
 
-else {
-if(NUM_CONSTRAINTS_ == 'two_constraint'){
+let vec_sum_ = [0, 0, UP_FORCE_];
 
-await exec_Floor_area_constraint_example_node_guqd0m82rm_twoConstraints_($p, footprints_);
-if ($p.terminated) { return mfn._getModel();}
+for (let  pni_ of posi_n_[pythonList(pi_, posi_n_.length)]){
+
+let edge_vec_ = ifn.vec.vecFromTo(posi_xyz_[pythonList(pi_, posi_xyz_.length)], posi_xyz_[pythonList(pni_, posi_xyz_.length)]);
+
+let deform_ = ifn.vec.vecLen(edge_vec_) - REST_LENGTH_;
+
+let force_ = deform_ * STIFFNESS_;
+
+edge_vec_ = ifn.vec.vecSetLen(edge_vec_, force_);
+
+vec_sum_ = ifn.vec.vecAdd(vec_sum_, edge_vec_);
 }
 
-else {
-
-await exec_Floor_area_constraint_example_node_guqd0m82rm_threeConstraints_($p, footprints_);
-if ($p.terminated) { return mfn._getModel();}
-}
+posi_xyz_tmp_[pythonList(pi_, posi_xyz_tmp_.length)] = ifn.vec.vecAdd(posi_xyz_[pythonList(pi_, posi_xyz_.length)], vec_sum_);
 }
 
-let coll_ = mfn.collection.Create( footprints_, "footprints" );
+posi_xyz_ = posi_xyz_tmp_;
 }
 
+for (let  p_ of mfn.query.Get('ps', null)){
 
-async function exec_Floor_area_constraint_example_node_9k44iz9eize($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Extrude', '__null__') }
-
-
-let coll_ = mfn.collection.Get( "footprints" );
-
-let footprints_ = mfn.query.Get('pg', coll_);
-
-for (let  footprint_ of footprints_){
-
-mfn.attrib.Set(footprint_, `actual_floor_area`,  mfn.attrib.Get(footprint_, 'area')*  mfn.attrib.Get(footprint_, 'num_floors') );
-
-let extruded_pgons_ = mfn.make.Extrude( footprint_, mfn.attrib.Get(footprint_, 'num_floors')* 3, mfn.attrib.Get(footprint_, 'num_floors'), 'quads' );
-
-if (ifn.types.isList(extruded_pgons_)){
-
-let roof_ = mfn.make.Extrude( extruded_pgons_[pythonList(-1, extruded_pgons_.length)], 1, 1, 'quads' );
-
-mfn.visualize.Color( extruded_pgons_, [0.9, 0.9, 1] );
-
-mfn.visualize.Color( roof_, [0.9, 1, 0.9] );
-}
+mfn.attrib.Set(p_, `xyz`,  posi_xyz_[pythonList( mfn.attrib.Get(p_, 'i'), posi_xyz_.length)] );
 }
 }
 
 
-async function exec_Floor_area_constraint_example_node_ilhny8pj4me($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (mfn._getModel().debug) { printFunc($p.console, 'Executing: HUD', '__null__') }
+async function exec_Form_Finding_Solver_node_xb0uguhzzym($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Color', '__null__') }
 
 
-let coll_ = mfn.collection.Get( "footprints" );
+let pgons_ = mfn.query.Get('pg', null);
 
-let pgons_ = mfn.query.Get('pg', coll_);
+let edges_ = mfn.query.Get('_e', null);
 
-let required_ = mfn.attrib.Get(null, 'total_footprint_area')* PLOT_RATIO_;
+let lengths_ = mfn.calc.Length( mfn.query.Get('_e', null) );
 
-let actual_ = ifn.mathjs.sum( mfn.attrib.Get(pgons_, 'actual_floor_area'));
+mfn.attrib.Set( edges_, "length", lengths_, 'many_values' );
 
-let line1_ = "Required floor area: " + ifn.conversion.numToStr(ifn.math.round(required_)) + " m2";
+mfn.attrib.Push( edges_, "length", 'pg', 'average' );
 
-let line2_ = "Actual floor area: " + ifn.conversion.numToStr(ifn.math.round(actual_)) + " m2";
-
-let line3_ = "Difference: " + ifn.math.sigFig(((actual_ - required_) / required_) * 100, 2) + " %";
-
-mfn.attrib.Set(null, `hud`,  line1_ + "\n" + line2_ + "\n" + line3_ );
+mfn.visualize.Gradient( pgons_, "length", null, 'Oranges' );
 }
 
 
-async function exec_Floor_area_constraint_example_node_wwvalcc9im($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Base', '__null__') }
-
-
-let base_pgon_ = mfn.query.Get('pg', null);
-
-let base_ = mfn.poly2d.OffsetRound( base_pgon_, 8, 0.1, 'square_end' );
-
-mfn.visualize.Color( base_, [0.9, 0.8, 0.9] );
-
-mfn.edit.Delete( base_, 'keep_selected' );
-}
-
-
-async function exec_Floor_area_constraint_example_node_owpz4ydqyyq($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
+async function exec_Form_Finding_Solver_node_e85jl2ckclo($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_){
 if (mfn._getModel().debug) { printFunc($p.console, 'Executing: End', '__null__') }
 
 
@@ -295,39 +203,31 @@ return null;
 }
 
 var merged;
-let ssid_exec_Floor_area_constraint_example_node_zbhfuete2q9 = mfn._getModel().getActiveSnapshot();
+let ssid_exec_Form_Finding_Solver_node_pud3fp3mcd = mfn._getModel().getActiveSnapshot();
 
-let ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8 = ssid_exec_Floor_area_constraint_example_node_zbhfuete2q9;
+let ssid_exec_Form_Finding_Solver_node_lxmqng2eusm = mfn._getModel().nextSnapshot([ssid_exec_Form_Finding_Solver_node_pud3fp3mcd]);
 
-await exec_Floor_area_constraint_example_node_u43xwptk1q8($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+await exec_Form_Finding_Solver_node_lxmqng2eusm($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_);
 
-let ssid_exec_Floor_area_constraint_example_node_bhtazbjmgal = mfn._getModel().nextSnapshot([ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8]);
+let ssid_exec_Form_Finding_Solver_node_ew77mtf8tor = mfn._getModel().nextSnapshot([ssid_exec_Form_Finding_Solver_node_pud3fp3mcd]);
 
-await exec_Floor_area_constraint_example_node_bhtazbjmgal($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+await exec_Form_Finding_Solver_node_ew77mtf8tor($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_);
 
-let ssid_exec_Floor_area_constraint_example_node_kte8fehyh5 = ssid_exec_Floor_area_constraint_example_node_bhtazbjmgal;
+let ssid_exec_Form_Finding_Solver_node_pyfyrdzpcyk = mfn._getModel().nextSnapshot([ssid_exec_Form_Finding_Solver_node_lxmqng2eusm, ssid_exec_Form_Finding_Solver_node_ew77mtf8tor]);
 
-await exec_Floor_area_constraint_example_node_kte8fehyh5($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+await exec_Form_Finding_Solver_node_pyfyrdzpcyk($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_);
 
-let ssid_exec_Floor_area_constraint_example_node_guqd0m82rm = ssid_exec_Floor_area_constraint_example_node_kte8fehyh5;
+let ssid_exec_Form_Finding_Solver_node_b69pxl4mk4v = ssid_exec_Form_Finding_Solver_node_pyfyrdzpcyk;
 
-await exec_Floor_area_constraint_example_node_guqd0m82rm($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+await exec_Form_Finding_Solver_node_b69pxl4mk4v($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_);
 
-let ssid_exec_Floor_area_constraint_example_node_9k44iz9eize = ssid_exec_Floor_area_constraint_example_node_guqd0m82rm;
+let ssid_exec_Form_Finding_Solver_node_xb0uguhzzym = ssid_exec_Form_Finding_Solver_node_b69pxl4mk4v;
 
-await exec_Floor_area_constraint_example_node_9k44iz9eize($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+await exec_Form_Finding_Solver_node_xb0uguhzzym($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_);
 
-let ssid_exec_Floor_area_constraint_example_node_ilhny8pj4me = ssid_exec_Floor_area_constraint_example_node_9k44iz9eize;
+let ssid_exec_Form_Finding_Solver_node_e85jl2ckclo = mfn._getModel().nextSnapshot([ssid_exec_Form_Finding_Solver_node_xb0uguhzzym]);
 
-await exec_Floor_area_constraint_example_node_ilhny8pj4me($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
-
-let ssid_exec_Floor_area_constraint_example_node_wwvalcc9im = mfn._getModel().nextSnapshot([ssid_exec_Floor_area_constraint_example_node_u43xwptk1q8]);
-
-await exec_Floor_area_constraint_example_node_wwvalcc9im($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
-
-let ssid_exec_Floor_area_constraint_example_node_owpz4ydqyyq = mfn._getModel().nextSnapshot([ssid_exec_Floor_area_constraint_example_node_ilhny8pj4me, ssid_exec_Floor_area_constraint_example_node_wwvalcc9im]);
-
-return await exec_Floor_area_constraint_example_node_owpz4ydqyyq($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_);
+return await exec_Form_Finding_Solver_node_e85jl2ckclo($p, REST_LENGTH_, STIFFNESS_, UP_FORCE_, NUM_ITERATIONS_, NET_TYPE_);
 }
 
 
@@ -409,11 +309,11 @@ mfn._getModel().debug = true;
 $p["console"] = [];
 $p["modules"] = mfn;
 $p["curr_ss"] = {};
-const result = await exec_Floor_area_constraint_example($p, RAND_SEED, PLOT_RATIO, MIN_NUM_FLOORS, MAX_NUM_FLOORS, NUM_CONSTRAINTS);
+const result = await exec_Form_Finding_Solver($p, REST_LENGTH, STIFFNESS, UP_FORCE, NUM_ITERATIONS, NET_TYPE);
 if (result === mfn._getModel()) { return { "model": mfn._getModel(), "result": null };}
 return {"model": mfn._getModel(), "result": result};
 /** * **/
 
 }
 
-module.exports = Floor_area_constraint_example;
+module.exports = Form_Finding_Solver;
