@@ -30,7 +30,7 @@ var __model__ = null;
 async function exec_Floor_area_constraint_example($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
 
 async function exec_Floor_area_constraint_example_node_u43xwptk1q8($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (__debug__) { printFunc($p.console, 'Executing: Skeleton', '__null__') }
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Skeleton', '__null__') }
 
 
 let r1_ = mfn.pattern.Rectangle( JSON.parse(JSON.stringify(ifn.constants.XY)), 123 );
