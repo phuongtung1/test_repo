@@ -42,7 +42,7 @@ let base_pgon_ = mfn.make.Polygon( r1_ );
 
 
 async function exec_Floor_area_constraint_example_node_bhtazbjmgal($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (__debug__) { printFunc($p.console, 'Executing: Plan', '__null__') }
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Plan', '__null__') }
 
 
 let base_pgon_ = mfn.query.Get('pg', null);
@@ -79,7 +79,7 @@ mfn.attrib.Set(null, `total_footprint_area`,  ifn.mathjs.sum( mfn.attrib.Get(foo
 
 
 async function exec_Floor_area_constraint_example_node_kte8fehyh5($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (__debug__) { printFunc($p.console, 'Executing: Calculate Relative Area', '__null__') }
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Calculate Relative Area', '__null__') }
 
 
 let plots_ = mfn.query.Get('pg', null);
@@ -192,7 +192,7 @@ mfn.attrib.Set(footprint_, `rel_area`,  ifn.math.round( mfn.attrib.Get(footprint
 }
 
 async function exec_Floor_area_constraint_example_node_guqd0m82rm($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (__debug__) { printFunc($p.console, 'Executing: Calc Number of Floors', '__null__') }
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Calc Number of Floors', '__null__') }
 
 
 let target_floor_area_ = PLOT_RATIO_ *  mfn.attrib.Get(null, 'total_footprint_area');
@@ -226,7 +226,7 @@ let coll_ = mfn.collection.Create( footprints_, "footprints" );
 
 
 async function exec_Floor_area_constraint_example_node_9k44iz9eize($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (__debug__) { printFunc($p.console, 'Executing: Extrude', '__null__') }
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Extrude', '__null__') }
 
 
 let coll_ = mfn.collection.Get( "footprints" );
@@ -252,7 +252,7 @@ mfn.visualize.Color( roof_, [0.9, 1, 0.9] );
 
 
 async function exec_Floor_area_constraint_example_node_ilhny8pj4me($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (__debug__) { printFunc($p.console, 'Executing: HUD', '__null__') }
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: HUD', '__null__') }
 
 
 let coll_ = mfn.collection.Get( "footprints" );
@@ -274,7 +274,7 @@ mfn.attrib.Set(null, `hud`,  line1_ + "\n" + line2_ + "\n" + line3_ );
 
 
 async function exec_Floor_area_constraint_example_node_wwvalcc9im($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (__debug__) { printFunc($p.console, 'Executing: Base', '__null__') }
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: Base', '__null__') }
 
 
 let base_pgon_ = mfn.query.Get('pg', null);
@@ -288,7 +288,7 @@ mfn.edit.Delete( base_, 'keep_selected' );
 
 
 async function exec_Floor_area_constraint_example_node_owpz4ydqyyq($p, RAND_SEED_, PLOT_RATIO_, MIN_NUM_FLOORS_, MAX_NUM_FLOORS_, NUM_CONSTRAINTS_){
-if (__debug__) { printFunc($p.console, 'Executing: End', '__null__') }
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: End', '__null__') }
 
 
 return null;
