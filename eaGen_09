@@ -1,0 +1,245 @@
+/**
+ * to use this code: import eaGen from this js file as well as the GI module
+ * run eaGen with the GI module as input along with other start node input
+ * e.g.:
+ * const eaGen = require('./eaGen.js').eaGen
+ * const module = require('gi-module')
+ * const result = await eaGen(module, start_input_1, start_input_2, ...);
+ *
+ * returns: a json object:
+ *   _ result.model -> gi model of the flowchart
+ *   _ result.result -> returned output of the flowchart, if the flowchart does not return any value, result.result is the model of the flowchart
+ */
+
+// Parameter: {"name":"ROTATE1","value":59,"type":1,"min":"0","max":"180","step":"1"}
+// Parameter: {"name":"ROTATE2","value":31,"type":1,"min":"0","max":"180","step":"1"}
+// Parameter: {"name":"HEIGHT_RATIO","value":0.42,"type":1,"min":"0","max":"1","step":"0.01"}
+
+
+const mfn = require('@design-automation/mobius-sim-funcs').Funcs();
+const ifn = require('@design-automation/mobius-inline-funcs').InlineClass(true);
+
+async function eaGen(ROTATE1,ROTATE2,HEIGHT_RATIO) {
+
+var __model__ = null;
+
+/** * **/
+
+async function exec_eaGen($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_){
+
+async function exec_eaGen_node_5ghc6lyoup($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: bldg_skeleton', '__null__') }
+
+
+let pln1_ = ifn.plane.plnLRotZ(ifn.plane.plnMake([0, -16, 0], [1, 0, 0], [0, 1, 0]), ifn.conversion.degToRad(ROTATE1_));
+
+let pln2_ = ifn.plane.plnLRotZ(ifn.plane.plnMake([0, 16, 0], [1, 0, 0], [0, 1, 0]), ifn.conversion.degToRad(ROTATE2_));
+
+let rec1_ = mfn.pattern.Rectangle( pln1_, [28, 19] );
+
+let rec2_ = mfn.pattern.Rectangle( pln2_, [28, 19] );
+
+let base1_ = mfn.make.Polygon( rec1_ );
+
+let base2_ = mfn.make.Polygon( rec2_ );
+
+mfn.attrib.Set(base1_, `num_floors`,  ifn.math.round(28 * HEIGHT_RATIO_) );
+
+mfn.attrib.Set(base2_, `num_floors`,  28 -  mfn.attrib.Get(base1_, 'num_floors') );
+}
+
+
+async function exec_eaGen_node_v9ahetwj1n9($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: bldg facades', '__null__') }
+
+
+for (let  base_ of mfn.query.Get('pg', null)){
+
+let num_floors_ = mfn.attrib.Get(base_, 'num_floors');
+
+let edges_ = mfn.query.Get('_e', base_);
+
+for (let  edge_ of [edges_[pythonList(0, edges_.length)], edges_[pythonList(2, edges_.length)]]){
+
+let pline_ = mfn.make.Polyline( edge_, 'open' );
+
+let div_ = mfn.edit.Divide( pline_, 5, 'by_max_length' );
+
+let facade_ = mfn.make.Extrude( pline_, num_floors_ * 3, num_floors_, 'quads' );
+
+mfn.attrib.Set(facade_, `type`,  "facade" );
+}
+
+let wall_ = mfn.make.Extrude( [edges_[pythonList(1, edges_.length)], edges_[pythonList(3, edges_.length)]], num_floors_ * 3, 1, 'quads' );
+
+mfn.attrib.Set(wall_, `type`,  "wall" );
+
+let roof_ = mfn.make.Copy( base_, [0, 0, num_floors_ * 3] );
+
+let roof_ex_ = mfn.make.Extrude( roof_, 2, 1, 'quads' );
+}
+
+let site_rec_ = mfn.pattern.Rectangle( JSON.parse(JSON.stringify(ifn.constants.XY)), [30, 70] );
+
+let site_pgon_ = mfn.make.Polygon( site_rec_ );
+
+let coll_ = mfn.collection.Create( mfn.query.Get('pg', null), "buildings" );
+}
+
+
+async function exec_eaGen_node_6kn62qhfwjo($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: rays', '__null__') }
+
+
+let coll_buildings_ = mfn.collection.Get( "buildings" );
+
+let facade_pgons_ = mfn.query.Filter( mfn.query.Get('pg', coll_buildings_), ['type', null], '==', "facade");
+
+for (let  pgon_ of facade_pgons_){
+
+let nor_ = mfn.calc.Normal( pgon_, 1 );
+
+let cen_ = mfn.calc.Centroid( pgon_, 'ps_average' );
+
+let ray_ = ifn.ray.rayMake(cen_, nor_);
+
+let vis_ = mfn.visualize.Ray( ray_, 0.1 );
+
+mfn.attrib.Set(pgon_, `ray`,  ray_ );
+}
+}
+
+
+async function exec_eaGen_node_va62l7fv8pn($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: bldg obstructions', '__null__') }
+
+
+for (let  base_ of mfn.query.Get('pg', null)){
+
+let ex_ = mfn.make.Extrude( base_, 2 + ( mfn.attrib.Get(base_, 'num_floors')* 3), 1, 'quads' );
+}
+
+let coll_ = mfn.collection.Create( mfn.query.Get('pg', null), "buildings_obstructions" );
+}
+
+
+async function exec_eaGen_node_4yzy0g4lboc($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_){
+if (mfn._getModel().debug) { printFunc($p.console, 'Executing: End', '__null__') }
+
+
+await mfn.io.Export( null, "ea_model1.gi", 'gi', 'Save to Local Storage' );
+
+return null;
+}
+
+var merged;
+let ssid_exec_eaGen_node_atyjicu3vpr = mfn._getModel().getActiveSnapshot();
+
+let ssid_exec_eaGen_node_5ghc6lyoup = ssid_exec_eaGen_node_atyjicu3vpr;
+
+await exec_eaGen_node_5ghc6lyoup($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_);
+
+let ssid_exec_eaGen_node_v9ahetwj1n9 = mfn._getModel().nextSnapshot([ssid_exec_eaGen_node_5ghc6lyoup]);
+
+await exec_eaGen_node_v9ahetwj1n9($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_);
+
+let ssid_exec_eaGen_node_6kn62qhfwjo = ssid_exec_eaGen_node_v9ahetwj1n9;
+
+await exec_eaGen_node_6kn62qhfwjo($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_);
+
+let ssid_exec_eaGen_node_va62l7fv8pn = mfn._getModel().nextSnapshot([ssid_exec_eaGen_node_5ghc6lyoup]);
+
+await exec_eaGen_node_va62l7fv8pn($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_);
+
+let ssid_exec_eaGen_node_4yzy0g4lboc = mfn._getModel().nextSnapshot([ssid_exec_eaGen_node_6kn62qhfwjo, ssid_exec_eaGen_node_va62l7fv8pn]);
+
+return await exec_eaGen_node_4yzy0g4lboc($p, ROTATE1_, ROTATE2_, HEIGHT_RATIO_);
+}
+
+
+function pythonList(x, l){
+    if (x < 0) {
+        return x + l;
+    }
+    return x;
+}
+
+function printFunc(_console, name, value){
+    let val;
+    let padding_style = 'padding: 2px 0px 2px 10px;';
+    if (!value) {
+        val = value;
+    } else if (value === '__null__') {
+        _console.push('<p style="' + padding_style + '"><b><i>_ ' + name + '</i></b></p>');
+        return value;
+    } else if (typeof value === 'number' || value === undefined) {
+        val = value;
+    } else if (typeof value === 'string') {
+        val = '"' + value.replace(/\n/g, '<br>') + '"';
+    } else if (value.constructor === [].constructor) {
+        let __list_check__ = false;
+        let __value_strings__ = [];
+        for (const __item__ of value) {
+            if (!__item__) {
+                __value_strings__.push('' + __item__);
+                continue;
+            }
+            if (__item__.constructor === [].constructor || __item__.constructor === {}.constructor) {
+                __list_check__ = true;
+            }
+            __value_strings__.push(JSON.stringify(__item__).replace(/,/g, ', '));
+        }
+        if (__list_check__) {
+            padding_style = 'padding: 2px 0px 0px 10px;';
+            val = '[<p style="padding: 0px 0px 2px 40px;">' +
+                  __value_strings__.join(',</p><p style="padding: 0px 0px 2px 40px;">') +
+                  '</p><p style="padding: 0px 0px 2px 30px;">]</p>';
+        } else {
+            val = '[' + __value_strings__.join(', ') + ']';
+        }
+    } else if (value.constructor === {}.constructor) {
+        let __list_check__ = false;
+        let __value_strings__ = [];
+        for (const __item__ in value) {
+            const __value__ = value[__item__];
+            if (!__value__) {
+                __value_strings__.push('\<b>"' + __item__ + '\"</b>' + ': ' + __value__);
+                continue;
+            }
+            if (__value__.constructor === [].constructor || __value__.constructor === {}.constructor) {
+                __list_check__ = true;
+            }
+            __value_strings__.push('\<b>"' + __item__ + '\"</b>' + ': ' + JSON.stringify(__value__).replace(/,/g, ', '));
+        }
+        if (__list_check__) {
+            padding_style = 'padding: 2px 0px 0px 10px;';
+            val = '{<p style="padding: 0px 0px 2px 40px;">' +
+                  __value_strings__.join(',</p><p style="padding: 0px 0px 2px 40px;">') +
+                  '</p><p style="padding: 0px 0px 2px 30px;">}</p>';
+        } else {
+            val = '{' + __value_strings__.join(', ') + '}';
+        }
+    } else {
+        val = value;
+    }
+    _console.push('<p style="' + padding_style + '"><b><i>_ ' + name+'</i></b>  = ' + val + '</p>');
+    return val;
+}
+
+
+const $p = {};
+if (__model__) {
+mfn.io._importGI(__model__);
+}
+mfn._getModel().debug = true;
+$p["console"] = [];
+$p["modules"] = mfn;
+$p["curr_ss"] = {};
+const result = await exec_eaGen($p, ROTATE1, ROTATE2, HEIGHT_RATIO);
+if (result === mfn._getModel()) { return { "model": mfn._getModel(), "result": null };}
+return {"model": mfn._getModel(), "result": result};
+/** * **/
+
+}
+
+module.exports = eaGen;
